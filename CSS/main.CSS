@@ -1,0 +1,89 @@
+body {
+    font-family: quicksand;
+    margin: 0 ;
+    width: 100%;
+    background-color: rgb(23, 23, 23);
+    color: white;
+    
+    /*padding-left: 15px;
+    padding-right: 15px;
+    font-size: 1em;*/
+    /*background-image: url('assets/dotted-blackbg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;*/
+}
+
+main {
+    text-align: center;
+}
+
+nav a{ /*how to highlight current user's page? */
+    padding: 1.5%;
+    text-decoration: none;
+    color: rgb(193, 193, 193);
+}
+
+#selected{
+    border-bottom: 2.2px solid rgb(173, 105, 207);
+    color: white;
+    padding-bottom: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: auto 1.5%;
+}
+
+nav a:hover{
+    color: #7e7faf;
+    font-weight: bolder;
+}
+
+footer {
+    text-align: center;
+    padding: 20pt;
+    background-color: rgb(46, 46, 46);
+}
+
+footer a {
+    padding: 0.5%;
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover{
+    font-size: larger;
+}
+
+.font-light{
+    font-size: small;
+    color: rgb(46, 46, 46);
+}
+
+
+
+.headerTable {
+    padding: 1%;
+    /*border-bottom: 1px solid #7e7faf;*/
+    background-color: rgb(26, 26, 26);
+}
+
+section {
+    padding: 40px 20px;
+    
+}
+
+.button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-family: quicksand;
+
+    background-color: #e8a7df;
+    color: #355059;
+    border: 1px solid #e8a7df;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    background-color: #fbeee5;
+}
