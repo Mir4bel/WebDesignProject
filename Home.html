@@ -2,69 +2,108 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>EduCents</title> <!-- TODO add logo and changing title logic -->
+		<title>EduCents - Home</title> <!-- TODO add logo and changing title logic -->
+		<link rel="stylesheet" href="CSS/main.CSS">
+		<link rel="stylesheet" href="CSS/home.css">
+		
+		<!-- Roboto Mono font-->
+		<!--<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+		-->
+		<!-- Quicksand font-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+		
 		<style>
-			body {
-				margin: 30px auto 50px;
-				width: 70%;
-				padding-left: 15px;
-				padding-right: 15px;
-				font-size: 1.2em;
-			}
-			footer {
-				text-align: center;
-				margin-top: 50pt;
-			}
 
-			nav a{
-				padding: 4px;
-			}
+
 
 		</style>
+	
 	</head>
 
 	<body>
-		<section id="header">
-			<header>
-				<div> <!--logo and nav links-->
-					<table style="width: 100%;">
-						<tr>
-							<td style="max-width: 70px;" ><a href = "#header"><img src = "" alt = "EduCents logo"></a></td>
-							<td >
-								<nav>
-								<a href = "#header">Home</a>
-								<a href = "#header">Input</a>
-								<a href = "#header">Analysis</a>
-								<a href = "#header">Personality</a>
-								<a href = "#header">Tips</a>
-								<a href = "#header">Support</a>
-								<a href = "#header">About Us</a>
-								</nav>
-							</td>
-							<td style="text-align: right;" >
-								<input type="button" value="Start Tracking">
-							</td>
-						</tr>
-					</table>					
-				</div>
-			</header>
-		</section>
+		<header id="header">
+			<div> <!--our logo and nav links-->
+				<table class="headerTable" style="width: 100%;">
+					<tr>
+						<td style="max-width: 60px;" >
+							<a href = "#header"><img src = "" alt = "EduCents logo"></a>
+						</td>
+						<td >
+							<nav>
+							<a href = "#header" id="selected">Home</a>
+							<a href = "Input.html">Input</a>
+							<a href = "Analysis.html">Analysis</a>
+							<a href = "Personality.html">Personality</a>
+							<a href = "Tips.html">Tips</a>
+							<a href = "Support.html">Support</a>
+							<a href = "AboutUs.html">About Us</a>
+							</nav>
+						</td>
+						<td style="text-align: right;" >
+							<input type="button" value="Start Tracking" class="button">
+						</td>
+					</tr>
+				</table>				
+			</div>
+		</header>
 		<main> <!-- main should have sections for each part-->
-			<section>
+			<section class="parallax1">
 				<h1>Master Your Student<br> 
 				Finances with EduCents</h1>
 				<p>Track expenses, analyze spending patterns, and build healthy financial habits designed specifically for student life.</p>
-				<a href = "Input.html"><input type = "button" value = "Start Tracking"></a>
-				<a href = "Input.html"><input type = "button" value = "Learn More"></a>
+				<a href = "Input.html"><input type = "button" value = "Start Tracking"  class="button"></a>
+				<a href = "Input.html"><input type = "button" value = "Learn More" class="button"></a>
+			</section>
+
+			<section id="WhyEduCents">
+				<h2>Why Choose EduCent?</h2>
+				<p>Built specifically for students with features that understand your unique financial needs</p>
+				<br>
+				<marquee>
+					<div class="marquee">
+						<img src="" alt="icon"/>
+						<h3>Smart Analysis</h3>
+						<p class="font-light">AI-powered insights tailored 
+							<br>for student spending patterns</p>
+					</div>
+					<div class="marquee">
+						<img src="" alt="icon"/>
+						<h3>Personality Insights</h3>
+						<p class="font-light">Understand your financial 
+							<br>personality and spending triggers</p>
+					</div>
+					<div class="marquee">
+						<img src="" alt="icon"/>
+						<h3>Student-Focused</h3>
+						<p class="font-light">Categories and features
+							<br> designed for student life</p>
+					</div>
+					<div class="marquee">
+						<img src="" alt="icon"/>
+						<h3>Easy Tracking</h3>
+						<p class="font-light">Quick expense input with
+							<br> smart categorization</p>
+					</div>
+
+
+
+				</marquee>
+			</section>
+			<section class="parallax2">
+				hhahahahaha
 			</section>
 		</main>
-		<footer> <!-- TODO figure out how to keep it at the bottom-->
+		<footer> <!-- TODO: figure out how to keep it at the bottom-->
 			<!-- logo -->
 			<h1>
 			<a href = "#header"><img src = "" alt = "EduCents logo"></a>
 			</h1>
-			<!-- social links -->
-			<div>
+			<!-- our social links -->
+			<div >
 				<a href = "https://discord.com/">
 					<img src="" alt="discord">
 				</a>
@@ -89,7 +128,7 @@
 			</div>
 			<!-- footer text -->
 			<p>Empowering students to build healthy financial habits for life.</p>
-			<p style="font-size: 0.88rem; color: rgb(61, 61, 61);">© 2026 EduCent. All rights reserved.</p>
+			<p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>
 		</footer>
     </body>
 </html>
