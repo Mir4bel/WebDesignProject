@@ -1,0 +1,92 @@
+.boxTable {
+    width: 90%;
+    margin: auto;
+    border-spacing: 50px;
+}
+ 
+.boxTable td {
+    width: 50%;
+    vertical-align: top; /*here*/
+}
+.box {
+    background: #e8a7df;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin: 10px;
+    padding: 25px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgb(0,0,0,0.05);
+    box-sizing: border-box; /*here*/
+}
+.inputField {
+    width: 90%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+label {
+    font-weight: 500;
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+}
+textarea{
+    height:90px;
+    font-family: inherit; /*here*/
+}
+ 
+.blackBtn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: black;
+    color: #e8a7df;
+    border: none;
+    cursor: pointer;
+}
+.whiteBtn {
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid #ccc;
+}
+.smallBlackBtn {
+    padding: 10px 20px;
+    background: black;
+    color: #e8a7df;
+    border: none;
+}
+.bottom {
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
+}
+.bottomButtons {
+    margin-top: 20px;
+}
+.entriesTable {
+    width: 100%;
+    background: white;
+    margin-top: 20px;
+}
+ 
+.entriesTable th {
+    background: #f2f2f2;
+    padding: 12px;
+}
+ 
+.entriesTable td {
+    padding: 12px;
+}
+.entriesBox{
+    width:80%;
+    margin:40px auto;
+    padding:20px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background:#e8a7df;
+}
+.entriesTable tr:hover {
+    background: #e8a7df;
+}

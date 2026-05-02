@@ -36,7 +36,6 @@ nav a{ /*how to highlight current user's page? */
 
 nav a:hover{
     color: #7e7faf;
-    font-weight: bolder;
 }
 
 footer {

@@ -1,96 +1,243 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset = "utf-8">
+    <head>
+        <meta charset = "utf-8">
 		<title>Expense Input</title> <!-- TODO add logo and changing title logic -->
-		<link rel="stylesheet" href="CSS/main.CSS">
-		
-		<!-- Roboto Mono font-->
-		<!--<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-		-->
-		<!-- Quicksand font-->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-	</head>
-
-	<body>
-		<header id="header">
-			<div> <!--our logo and nav links-->
-				<table class="headerTable" style="width: 100%;">
-					<tr>
-						<td style="max-width: 60px;" >
-							<a href = "#header"><img src = "" alt = "EduCents logo"></a>
-						</td>
-						<td >
-							<nav>
+        <link rel="stylesheet" href="CSS/main.CSS">
+        <link rel="stylesheet" href="CSS/input.css">
+        
+        <!-- Roboto Mono font-->
+        <!--<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+        -->
+        <!-- Quicksand font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    </head>
+ 
+    <body>
+        <header id="header">
+            <div> <!--our logo and nav links-->
+                <table class="headerTable" style="width: 100%;">
+                    <tr>
+                        <td style="max-width: 60px;" >
+                            <a href = "#header"><img src = "" alt = "EduCents logo"></a>
+                        </td>
+                        <td >
+                            <nav>
 							<a href = "index.html">Home</a>
 							<a href = "#header" id="selected">Input</a>
-							<a href = "Analysis.html">Analysis</a>
-							<a href = "Personality.html">Personality</a>
-							<a href = "Tips.html">Tips</a>
-							<a href = "Support.html">Support</a>
-							<a href = "AboutUs.html">About Us</a>
-							</nav>
-						</td>
+                            <a href = "Analysis.html">Analysis</a>
+                            <a href = "Personality.html">Personality</a>
+                            <a href = "Tips.html">Tips</a>
+                            <a href = "Support.html">Support</a>
+                            <a href = "AboutUs.html">About Us</a>
+                            </nav>
+                        </td>
                         <!--
-						<td style="text-align: right;" >
-							<input type="button" value="Start Tracking" class="button">
+                        <td style="text-align: right;" >
+                            <input type="button" value="Start Tracking" class="button">
 						</td> -->
-					</tr>
-				</table>				
-			</div>
-		</header>
-
-
-        <main> <!-- main should have sections for each part-->
-			<section>
-			</section>
-				<!-- Example: Fast, smooth scrolling -->
-				<marquee scrolldelay="20" truespeed="true">This scrolls fast!</marquee>
-
-			<section>
-			</section>
-
-			<section>
-			</section>
-		</main>
-
-
+                    </tr>
+                </table>                
+            </div>
+        </header>
+ 
+ 
+ 
+<main>
+ 
+ 
+<div>
+    <h1>Expense Input</h1>
+    <p>Track your income and expenses to better understand your spending habits</p>
+</div>
+ 
+ 
+<table class="boxTable">
+    <tr>
+ 
+ 
+        <td>
+            <div class="box">
+ 
+                <h2>Add Income</h2>
+ 
+                <label>Source</label>
+                <input class="inputField" type="text" placeholder="e.g., Job salary, Allowance" required>
+ 
+                <label>Amount</label>
+                <input class="inputField" type="number" placeholder="AED 0.00" required>
+ 
+                <label>Date</label>
+                <input class="inputField" type="date" required>
+ 
+                <label>Notes (Optional)</label>
+                <textarea class="inputField" placeholder="Additiona Details..."></textarea>
+ 
+                <button class="blackBtn">Add Income</button>
+ 
+            </div>
+        </td>
+ 
+        <!-- EXPENSE -->
+        <td>
+            <div class="box">
+ 
+                <h2>Add Expense</h2>
+ 
+                <label>Category</label>
+                <select class="inputField" required>
+                    <option value="">Select category</option>
+                    <option>Food & Dining</option>
+                    <option>Transportation</option>
+                    <option>Education</option>
+                    <option>Entertainment</option>
+                    <option>Shopping</option>
+                    <option>Other</option>
+                </select>
+ 
+ 
+                <label>Description</label>
+                <input class="inputField" type="text" placeholder="e.g., Coffee, Taxi" required>
+ 
+                <label>Amount</label>
+                <input class="inputField" type="number" placeholder="AED 0.00" required>
+ 
+                <label>Date</label>
+                <input class="inputField" type="date" required>
+ 
+                <button class="blackBtn">Add Expense</button>
+ 
+            </div>
+        </td>
+ 
+    </tr>
+</table>
+ 
+<div class="entriesBox">
+ 
+    <div class="entriesLegend">
+        <h2>Recent Entries</h2>
+ 
+        <div>
+            <button class="whiteBtn">All</button>
+            <button class="smallBlackBtn">Income</button>
+            <button class="smallBlackBtn">Expenses</button>
+        </div>
+    </div>
+ 
+    <table class="entriesTable">
+    <tr>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+ 
+        <tr>
+        <td>Income</td>
+        <td>Part-time Job</td>
+        <td>Weekly paycheck</td>
+        <td>+350.00</td>
+        <td>10/03/2026</td>
+    </tr>
+ 
+    <tr>
+        <td>Expense</td>
+        <td>Food & Dining</td>
+        <td>Coffee Shop</td>
+        <td>-24.50</td>
+        <td>15/02/2026</td>
+    </tr>
+ 
+    <tr>
+        <td>Expense</td>
+        <td>Education</td>
+        <td>Textbooks</td>
+        <td>-89.99</td>
+        <td>07/01/2026</td>
+    </tr>
+ 
+    <tr>
+        <td>Expense</td>
+        <td>Transportation</td>
+        <td>Bus Pass</td>
+        <td>-5.00</td>
+        <td>01/01/2026</td>
+    </tr>
+ 
+    <tr>
+        <td>Income</td>
+        <td>Freelance</td>
+        <td>Logo Design</td>
+        <td>+120.00</td>
+        <td>04/12/2025</td>
+    </tr>
+ 
+    <tr>
+        <td>Expense</td>
+        <td>Entertainment</td>
+        <td>Movie Ticket</td>
+        <td>-45.00</td>
+        <td>23/10/2025</td>
+    </tr>
+ 
+ 
+    </table>
+ 
+</div>
+ 
+<div class="bottom">
+ 
+    <h3>Ready to analyze your data?</h3>
+    <p>Submit your entries to get insights</p>
+ 
+    <div class="bottomButtons">
+        <button class="whiteBtn">Save Draft</button>
+        <button class="smallBlackBtn">Submit & Analyze</button>
+    </div>
+ 
+</div>
+ 
+</main>
+ 
+ 
 		<footer>
-			<!-- logo -->
-			<h1>
+            <!-- logo -->
+            <h1>
 			<a href = "index.html"><img src = "" alt = "EduCents logo"></a>
-			</h1>
-			<!-- our social links -->
-			<div >
-				<a href = "https://discord.com/">
-					<img src="" alt="discord">
-				</a>
-				<a href = "https://www.reddit.com/">
-					<img src="" alt="reddit">
-				</a>
-				<a href = "https://github.com/">
-					<img src="" alt="github">
-				</a>
-				<a href = "mailto:educents@gmail.com">
-					<img src="" alt="email">
-				</a>
-				<a href= "https://www.instagram.com/">
-					<img src="" alt="insta">
-				</a>
-				<a href= "https://www.facebook.com/">
-					<img src="" alt="facebook">
-				</a>
-					<a href= "https://x.com/?lang=en">
-					<img src="" alt="x">
-				</a>
-			</div>
-			<!-- footer text -->
-			<p>Empowering students to build healthy financial habits for life.</p>
-			<p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>
-		</footer>
+            </h1>
+            <!-- our social links -->
+            <div >
+                <a href = "https://discord.com/">
+                    <img src="" alt="discord">
+                </a>
+                <a href = "https://www.reddit.com/">
+                    <img src="" alt="reddit">
+                </a>
+                <a href = "https://github.com/">
+                    <img src="" alt="github">
+                </a>
+                <a href = "mailto:educents@gmail.com">
+                    <img src="" alt="email">
+                </a>
+                <a href= "https://www.instagram.com/">
+                    <img src="" alt="insta">
+                </a>
+                <a href= "https://www.facebook.com/">
+                    <img src="" alt="facebook">
+                </a>
+                    <a href= "https://x.com/?lang=en">
+                    <img src="" alt="x">
+                </a>
+            </div>
+            <!-- footer text -->
+            <p>Empowering students to build healthy financial habits for life.</p>
+            <p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>
+        </footer>
     </body>
 </html>
