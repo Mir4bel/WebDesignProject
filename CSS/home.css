@@ -1,70 +1,79 @@
-div.marquee{
-    background: #faeadd;
+.headerTable {
+    margin-bottom: 0px;
+}
+
+footer {
+    margin-top: 0px;
+}
+
+marquee div{
+    background:#e8a7df;
+    /* background: #faeadd; */
     border: 1px solid #6c9de9 ;
     padding: 15px;
     margin: 15px 30px;
-    width: 190px;
+    width: 200px;
     text-align: center;
     display: inline-block;
+    transition: 0.4s;
 
 }
 
+marquee div:hover{
+    /* background:#fad0f4; */
+    transform: scale(1.1);
+    transition: 0.3s;
 
+}
 marquee {
     display: inline-block;
-    vertical-align: top;
 }
 
 #WhyEduCents {
-    white-space: nowrap;
     overflow: hidden ;
     position: relative;
+    /* background: linear-gradient(0deg, #9e2640 20%, rgba(255, 0, 0, 0) 90%); */
+
 }
-
-#marquee2 {
-    transform: translateX(100vw);
-}
-
-/* #marquee1 {
-
-} */
-/* 
-#marquee2 {
-    display: inline-block;
-    transform: translateX(100vw); 
-}
-
-.marquee-row {
-    position: absolute;
-    top: 100;
-    left: 0;
-    width: 100%;
-}
-
-#WhyEduCents {
-    text-align: center;
-    color: #e8a7df ;
-    overflow: visible;
-    padding-left: 0;
-    padding-right: 0;
-    min-height: 350px;
-} */
 
 
 .parallax1 {
     background: url(../assets/pixel-cat-pond-ezgif.com-effects2.gif);
-    min-height: 700px;
+    min-height: 400px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 100px 0;
 }
 
+#parallax1 {
+    text-shadow: 1px 1px #000000, 0 0 10px #000000;
+}
 .parallax2 {
     background: url(../assets/red-lake_CarlBurton.gif);
-    min-height: 700px;
+    min-height: 500px;
     background-attachment: fixed;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
+
+
+h1 {
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+}
+
+#titleCaption {
+    font-size: 1.3em;
+}
+
+h2 {
+    margin-left: 5%;
+    text-align: left;
+    font-size: 2em;
+}
+

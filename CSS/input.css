@@ -8,23 +8,28 @@
     width: 50%;
     vertical-align: top; /*here*/
 }
-.box {
+.box{
     background: #e8a7df;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 12px;
-    margin: 10px;
+    /* margin: 10px; */
     padding: 25px;
-    width: 100%;
-    box-shadow: 0 2px 8px rgb(0,0,0,0.05);
-    box-sizing: border-box; /*here*/
+    /* width: 100%; */
+    /* box-shadow: 0 2px 8px rgb(0,0,0,0.05); */
+    /* box-sizing: border-box; here */
 }
 .inputField {
-    width: 90%;
+    width: 95%;
     padding: 10px;
+    margin-right: 10px;
     margin-top: 6px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
+}
+select.inputField {
+   width:100%;
+   font-family: quicksand;
 }
 label {
     font-weight: 500;
@@ -34,24 +39,30 @@ label {
 }
 textarea{
     height:90px;
-    font-family: inherit; /*here*/
+    resize: none;
+    font-family: quicksand;
+}
+
+button:hover{
+    transform: scale(1.03);
+
 }
  
-.blackBtn {
+button.blackBtn {
     width: 100%;
     padding: 12px;
     margin-top: 15px;
     background: black;
     color: #e8a7df;
     border: none;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
-.whiteBtn {
+button.whiteBtn{
     padding: 10px 20px;
     background: white;
     border: 1px solid #ccc;
 }
-.smallBlackBtn {
+button.smallBlackBtn {
     padding: 10px 20px;
     background: black;
     color: #e8a7df;
@@ -62,13 +73,14 @@ textarea{
     margin-top: 40px;
     text-align: center;
 }
-.bottomButtons {
+/* .bottomButtons {
     margin-top: 20px;
-}
-.entriesTable {
+} */
+.entriesTable{
     width: 100%;
     background: white;
     margin-top: 20px;
+    color: rgb(23, 23, 23);
 }
  
 .entriesTable th {
@@ -76,7 +88,7 @@ textarea{
     padding: 12px;
 }
  
-.entriesTable td {
+.entriesTable td{
     padding: 12px;
 }
 .entriesBox{
@@ -87,6 +99,6 @@ textarea{
     border-radius:12px;
     background:#e8a7df;
 }
-.entriesTable tr:hover {
-    background: #e8a7df;
+.entriesTable tr:hover{
+    background: #fff4fd;
 }
