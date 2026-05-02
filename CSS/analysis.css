@@ -1,0 +1,57 @@
+section.stats div {
+    padding: 20px 20px;
+}
+
+section.stats td{
+    background: rgb(61, 41, 63);
+    width: 20%;
+}
+
+tr.firstRow p {
+    padding: 0px;
+    font-size: smaller;
+    margin: 14px 0 6px 0px;
+}
+
+tr.secondRow div, tr.thirdRow div{
+    height: 200px;
+}
+
+tr.secondRow p {
+    margin-top: 0;
+    padding: 5px 0;
+}
+
+section.stats h3{
+    padding: 0;
+    margin: 0;
+}
+
+
+section.stats table{
+    margin-left: 7%;
+    margin-right: 7%;
+    width: 86%;
+    border-spacing: 30px 60px;
+    text-align: left;
+}
+
+section.keyInsights table{
+    background: rgb(61, 41, 63);    
+    margin-left: 9.2%;
+    margin-right: 9.2%;
+    width: 81.6%;
+    border-spacing: 30px 20px;
+    text-align: left;
+}
+
+section.keyInsights p{
+        margin: 0 auto;
+        padding: 1px;
+}
+ section.keyInsights td{
+    width: 50%;
+ }
+ section.keyInsights td div {
+    background: rgb(191, 168, 194);
+ }

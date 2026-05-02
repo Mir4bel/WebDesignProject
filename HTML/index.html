@@ -18,7 +18,21 @@
 	
 	</head>
 
+	<!-- rabbit loading screen-->
+	<!-- <script>
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            document.getElementById("loader").classList.add("hidden");
+        }, 3000);
+    });
+	</script> -->
+
 	<body>
+		<!-- <div id="loader">
+			<img src="../assets/ezgif.com-crop.gif" alt="Loading...">
+		</div> -->
+
+
 		<header id="header">
 			<div> <!--our logo and nav links-->
 				<table class="headerTable" style="width: 100%;">
@@ -48,7 +62,7 @@
 			<section class="parallax1">
 				<div id="parallax1">
 				<h1>Master Your Student<br>Finances with EduCent</h1>
-					<p id="titleCaption">Track expenses, analyze spending patterns, and build healthy financial habits<br>designed specifically for student life.</p>
+					<p id="titleCaption">Track expenses, analyze spending patterns, and build healthy<br>financial habits designed specifically for student life.</p>
 					<a href = "Input.html"><input type = "button" value = "Start Tracking"  class="button"></a>
 					<a href = "Input.html"><input type = "button" value = "Learn More" class="button"></a>
 				</div>
@@ -227,7 +241,11 @@
 
 
 			<section class="parallax2">
-				<img src="../assets/watermelon-cat.png"  width = "100">
+				<marquee direction="down" behavior = "alternate" height="100%" scrollamount = "20">
+					<marquee behavior = "alternate" width="100%" scrollamount = "20">
+						<img src="../assets/watermelon-cat.png"  width = "100">
+					</marquee>
+				</marquee>
 			</section>
 		</main>
 

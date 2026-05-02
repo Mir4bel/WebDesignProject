@@ -17,6 +17,8 @@ marquee div{
     display: inline-block;
     transition: 0.4s;
 
+    /* border-radius: 12px; */
+
 }
 
 marquee div:hover{
@@ -32,6 +34,8 @@ marquee {
 #WhyEduCents {
     overflow: hidden ;
     position: relative;
+    padding-bottom: 30px;
+    padding-top: 0;
     /* background: linear-gradient(0deg, #9e2640 20%, rgba(255, 0, 0, 0) 90%); */
 
 }
@@ -41,28 +45,41 @@ marquee {
     background: url(../assets/pixel-cat-pond-ezgif.com-effects2.gif);
     min-height: 400px;
     background-attachment: fixed;
-    background-position: center;
+    background-position: 50% 40%;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 100px 0;
+    padding: 0;
 }
 
 #parallax1 {
+    padding: 160px;
+    height: 300px;
     text-shadow: 1px 1px #000000, 0 0 10px #000000;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
 }
 .parallax2 {
-    background: url(../assets/red-lake_CarlBurton.gif);
+    background: url(../assets/winter-twigs-ezgif.com-effects.gif);
     min-height: 500px;
     background-attachment: fixed;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
 
+    
+}
+
+.parallax2 marquee {
+    height: 500px;
+}
+
+.parallax2 marquee marquee {
+    height: 100%;
 }
 
 
+
 h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     padding: 0;
     margin: 0;
 }
