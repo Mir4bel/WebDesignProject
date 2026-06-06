@@ -10,6 +10,42 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+        <style>
+            .articleBox:hover{
+                transform: scale(1.05);
+            }
+        </style>
+        <script>
+            function searchGoogle(event){
+                if(event.key == "Enter") {
+                    var search = document.getElementById("searchBox").value;
+ 
+                    location.href="https://scholar.google.com/scholar?q=" + search;
+                }
+            }
+        </script>
+
+        <style>
+            input{  
+                padding: 6pt 30pt;
+                margin-top: 10pt;
+                font-weight: bold;
+                font-size: large;
+                border: none;
+                background-color:#ECE6DD;
+                color: #5c3378;
+                border-radius: 80pt;
+                border: 1pt #4c3378 solid; 
+            }
+
+            input:hover{
+                background-color: rgb(205, 168, 210);
+                color: #ECE6DD;
+                border: 1pt #ECE6DD solid; 
+            }
+
+        </style>
     </head>
  
     <body>
@@ -37,23 +73,221 @@
         </header>
 		
 		<main>
-			<setion>
-				<div>
-					<br>
-					<h1>Financial Tips & Advice</h1>
-					<p>caption</p>
-				</div>
-			</setion>
+            <section class ="tipsHeader">
+                <div>
+                    <h1>Financial Tips & Advice</h1>
+                    <p>Expert guidance to help you build better financial habits</p>
+                </div>
+            </section>
+            <hr style="margin-left: 50px; margin-right: 50px;">
  
-			<section>
-			</setion>
+            <section class = "searchSection">
  
-			<section>
-			</setion>
+                <input type = "text" id = "searchBox" placeholder="Search tips and advice in Google Scholar" onkeypress="searchGoogle(event)">
+            
+            </section>
+            <hr style="margin-left: 50px; margin-right: 50px;">
  
-			<section>
-			</setion>
+            <section class ="tipCategories">
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+                                <h2>Budgeting</h2>
+                                <p>Master the art of managing your money with effective budgeting startegies</p>
+            
+                                <div class="articleBox">
+                                    <h4>50/30/20 Rule for Students</h4>
+                                    <p>Learn how to allocate your income effectively</p>
+                                    <a href = "https://www.bankrate.com/personal-finance/what-is-the-50-30-20-rule/" target="_blank">
+                                        5 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>How to build a Simple Student Budget Spreadsheet</h4>
+                                    <p>Track income and expenses using Excel or Google Sheets</p>
+                                    <a href="https://www.youtube.com/watch?v=2RGpesX2qwM" target="_blank">
+                                        15 min video
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Creating Your First Budget</h4>
+                                    <p>Step-by-step guide for beginners</p>
+                                    <a href = "https://www.nerdwallet.com/article/finance/how-to-budget" target="_blank">
+                                        7 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Overcoming budgeting challenges</h4>
+                                    <p>Learn why your budget keeps failing and how to fix that</p>
+                                    <a href = "https://www.adcb.com/en/consumer-education-awareness/money-guide-expatriates-uae/overcoming-budgeting-challenges%22 target="_blank">
+                                        4 min read
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <h2>Saving</h2>
+                                <p>Build your savings with smart strategies that work for student budgets</p>
+            
+                                <div class="articleBox">
+                                    <h4>Emergency Fund for Students</h4>
+                                    <p>Why you need one and how to build it</p>
+                                    <a href="https://www.fidelity.com/learning-center/smart-money/emergency-fund" target="_blank">
+                                        6 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Automatic Saving Strategies</h4>
+                                    <p>Set up systems to save without thinking</p>
+                                    <a href="https://www.experian.com/blogs/ask-experian/how-to-create-automatic-savings-plan/" target="_blank">
+                                        15 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>High-Yield Savings Account</h4>
+                                    <p>Make your money work harder for you</p>
+                                    <a href ="https://www.investopedia.com/articles/pf/09/high-yield-savings-account.asp" target="_blank">
+                                        7 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Saving for Study Abroad</h4>
+                                    <p>Plan and save for international experiences</p>
+                                    <a href= "https://www.gooverseas.com/blog/how-to-budget-for-study-abroad" target="_blank">
+                                        8 min read
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <h2>Debit Management</h2>
+                                <p>Learn to manage student loans and avoid debt traps</p>
+            
+                                <div class="articleBox">
+                                    <h4>Understanding Education Loans</h4>
+                                    <p>Learn while you earn and give your career a boost</p>
+                                    <a href= "https://www.emiratesnbd.com/en/loans/personal-loans/scholar-plus-education-loan" target="_blank">
+                                        7 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Credit Cards: Do's and Don'ts</h4>
+                                    <p>Build credit responsibly while avoiding debt</p>
+                                    <a href= "https://www.consolidatedcredit.org/how-to-use-a-credit-card/dos-and-donts/" target="_blank">
+                                        15 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Debt Snowball vs Avalanche</h4>
+                                    <p>Choose the right payoff strategy</p>
+                                    <a href= "https://www.investopedia.com/articles/personal-finance/080716/debt-avalanche-vs-debt-snowball-which-best-you.asp%22 target="_blank">
+                                        6 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Avoiding Common Debt Traps</h4>
+                                    <p>Red flags and prevention strategies</p>
+                                    <a href= "https://www.exchangebankco.com/blog/post/5-common-debt-traps-to-avoid" target="_blank">
+                                        5 min read
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <h2>Investing</h2>
+                                <p>Get started with investing basics and build wealth</p>
+            
+                                <div class="articleBox">
+                                    <h4>Investing 101 for Students</h4>
+                                    <p>Basic concepts and getting started</p>
+                                    <a href= "https://financialwellness.ucmerced.edu/news/2023/investing-101-guide-students" target="_blank">
+                                        12 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Index Funds vs Individual Stocks</h4>
+                                    <p>Understanding your investment options</p>
+                                    <a href= "https://smartasset.com/investing/index-funds-vs-stocks" target="_blank">
+                                        15 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Robo-Advisors Explainedt</h4>
+                                    <p>Automated investing for beginners</p>
+                                    <a href= "https://www.investopedia.com/terms/r/roboadvisor-roboadviser.asp" target="_blank">
+                                        20 min read
+                                    </a>
+                                </div>
+            
+                                <div class="articleBox">
+                                    <h4>Retirement Planning in Your 20s</h4>
+                                    <p>Why starting early makes a huge difference</p>
+                                    <a href= "https://www.pensionbee.com/uk/pensions-explained/retirement-planning/retirement-planning-in-your-20s%22 target="_blank">
+                                        9 min read
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <hr style="margin-left: 50px; margin-right: 50px;">
  
+            <section class = "featured">
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <marquee direction="left" style="font-size: 36px; font-weight: bolder;">Features This Week</marquee>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="articleBox">
+                                <a href="https://www.iowastudentloan.org/articles/college/10-budget-tips-for-spring-break-infographic.aspx" target="_blank">
+                                    <img src="assets/Beach.jpg" alt="beach vacation budget">
+                                </a>
+                                <h4 style="color: white;">Spring Break Budget Planning</h4>
+                                <p style="color: plum;">How to enjoy your break without breaking your bank</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="articleBox">
+                                <a href="https://medium.com/@moneyonlineabubakar/5-side-hustles-for-busy-students-working-methods-03ae8c84baeb%22 target="_blank">
+                                    <img src="assets/Catdesk.jpg" alt="beach vacation budget">
+                                </a>
+                                <h4 style="color: white;">Side Hustle Ideas for Students</h4>
+                                <p style="color: plum;">Flexible income opportunities that fit around classes</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="articleBox">
+                                <a href="https://ffnews.com/thought-leader/what-students-need-to-know-about-finance-apps/" target="_blank">
+                                    <img src="assets/catstudy.jpg" alt="beach vacation budget">
+                                </a>
+                                <h4 style="color: white;">Financial Apps Every Student Needs</h4>
+                                <p style="color: plum;">Tools that make money management easier</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
 		</main>
  
  

@@ -1,0 +1,117 @@
+section{
+    text-align: left;
+}
+section.tipsHeader{
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 50px;
+}
+ 
+section.tipsHeader h1{
+    margin-bottom: 5px;
+}
+ 
+section.tipsHeader p{
+    margin-top: 0;
+}
+ 
+section.searchSection table{
+    width: 84%;
+    margin: 30px auto;
+}
+ 
+section.searchSection input{
+    width: 75%;
+    padding: 10px;
+    margin-left: 100px;
+}
+ 
+section.tipCategories table{
+    width: 84%;
+    margin: 0 auto;
+    border-spacing: 25px;
+}
+ 
+section.tipCategories td{
+    width: 50%;
+    vertical-align: top;
+}
+ 
+section.tipCategories td {
+   background: rgb(61,41,63);
+   padding: 20px;
+}
+section.tipCategories h2{
+   margin-top: 0;
+   margin-bottom: 10px;
+}
+section.tipCategories p{
+    margin-bottom: 15px;
+}
+ 
+.articleBox h4{
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.articleBox p{
+    margin: 5px 0;
+    padding: 0;
+}
+ 
+section.featured{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+ 
+section.featured table{
+    width: 84%;
+    margin: 0 auto;
+    border-spacing: 20px;
+}
+ 
+section.featured td{
+    width: 33%;
+}
+ 
+section.featured td div{
+    background: rgb(61,41,63);
+    padding: 15px;
+}
+ 
+section.featured img{
+    width: 100%;
+    height: 180px;
+    background: rgb(191,186,194);
+}
+section.features h2{
+    margin: 0;
+    padding-bottom: 10px;
+}
+section.featured h4{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+section.featured p{
+    margin: 0;
+}
+a{
+    color: rgb(69, 40, 80);
+}
+.articleBox{
+    color: black;
+    background:rgb(227, 193, 246);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+}
+body{
+    background: url(../assets/PurpleCat2.jpg);
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ 
+ 
+ 

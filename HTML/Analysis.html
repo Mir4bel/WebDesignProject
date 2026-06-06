@@ -10,9 +10,74 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <script>
+            function loadAnalysis()
+            {
+                calcIncome();
+                calcExpense();
+                calcNetSavings();
+                calcSavingsRate();
+            }
+            function calcIncome()
+            {
+                var income = localStorage.getItem("totalIncome");
+
+                if(income == null)
+            {
+                income = 0;
+            }
+            document.getElementById("totalIncome").innerHTML = "AED " + income;
+            }
+
+            function calcExpense() {
+                var expense = localStorage.getItem("totalExpense");
+                
+                if(expense == null)
+                {
+                    expense = 0;
+                }
+                document.getElementById("totalExpense").innerHTML = "AED " + expense;
+            }
+
+            function calcNetSavings(){
+                var income = localStorage.getItem("totalIncome");
+                var expense = localStorage.getItem("totalExpense");
+
+                if (income == null) {
+                    income = 0;
+                }
+                if (expense == null) {
+                    expense = 0;
+                }
+                var net = parseFloat(income) - parseFloat(expense);
+
+                document.getElementById("netSavings").innerHTML = "AED " + net;
+            }
+
+            function calcSavingsRate(){
+                var income = localStorage.getItem("totalIncome");
+                var expense = localStorage.getItem("totalExpense");
+
+                if (income == null) {
+                    income = 0;
+                }
+                if (expense == null) {
+                    expense = 0;
+                }
+                if(parseFloat(income) == 0) {
+                    document.getElementById("savingsRate").innerHTML = "0%";
+                } else {
+                    var rate = ((parseFloat(income) - parseFloat(expense)) / parseFloat(income) * 100);
+
+                    var roundedRate = Math.round(rate * 100) / 100;
+
+                    document.getElementById("savingsRate").innerHTML = roundedRate + "%";
+                }
+            }
+        </script>
     </head>
  
-    <body>
+    <body onload="loadAnalysis()">
         <header id="header">
             <div> <!--our logo and nav links-->
                 <table class="headerTable" style="width: 100%;">
@@ -22,8 +87,8 @@
                         </td>
                         <td>
                             <nav>
-							<a href = "index.html">Home</a>
-							<a href = "Input.html">Input</a>
+                            <a href = "index.html">Home</a>
+                            <a href = "Input.html">Input</a>
                             <a href = "#header" id="selected">Analysis</a>
                             <a href = "Personality.html">Personality</a>
                             <a href = "Tips.html">Tips</a>
@@ -34,51 +99,218 @@
                     </tr>
                 </table>                
             </div>
-        </header>
-		
-		<main>
-			<setion>
-				<div>
-                    <br>
-					<br>
-					<h1>Analysis Results</h1>
-					<p>Your financial insights and spending patterns analysis</p>
-				</div>
-			</setion>
  
-			<section class="stats">
+            <script>
+                var income = 0;
+                var expense = 0;
+ 
+                function loadAnalysis()
+                {
+                   income = parseFloat(localStorage.getItem("totalIncome"));
+                   expense = parseFloat(localStorage.getItem("totalExpense"));
+ 
+                    if(isNaN(income)) income = 0;
+                    if(isNaN(expense)) expense = 0;
+ 
+                    calcIncome();
+                    calcExpense();
+                    calcNetSavings();
+                    calcSavingsRate();
+ 
+                    savingsProgress();
+                    budgetReccs();
+                    spendingTrend();
+                    topCategory();
+                }
+                function calcIncome()
+                {
+                document.getElementById("totalIncome").innerHTML = "AED " + Math.round(income * 100) / 100;;
+                }
+ 
+                function calcExpense() {
+                    document.getElementById("totalExpense").innerHTML = "AED " + Math.round(expense * 100) / 100;
+                }
+ 
+                function calcNetSavings(){
+ 
+                    var net = income - expense;
+                    net = Math.round(net * 100) / 100;
+ 
+                    document.getElementById("netSavings").innerHTML = "AED " + net;
+                }
+ 
+                function calcSavingsRate(){
+ 
+                    if(income === 0) {
+                        document.getElementById("savingsRate").innerHTML = "0%";
+                    } else {
+                        var rate = ((income - expense) / income) * 100;
+ 
+                        rate = Math.round(rate * 100) / 100;
+ 
+                        document.getElementById("savingsRate").innerHTML = rate + "%";
+                    }
+                }
+ 
+                function savingsProgress(){
+ 
+                    if(income === 0){
+                        document.getElementById("savingsProgress").innerHTML =
+                         "No income detected... either you're rich in mystery or just forgot to enter data. ";
+                    } else {
+                        var rate = ((income - expense) / income) * 100;
+                        
+                        if (rate < 5){
+                            document.getElementById("savingsProgress").innerHTML = "Your money is disappearing faster than snacks in a group project";
+                        }
+                        else if(rate < 20) {
+                            document.getElementById("savingsProgress").innerHTML = "You're barely saving, small leaks add up";
+                    
+                        } else if(rate < 40) {
+                             document.getElementById("savingsProgress").innerHTML = "Not bad, your money is behaving... for once. Keep an eye on it though!!";
+                        } else {
+                             document.getElementById("savingsProgress").innerHTML = "Your savings are thriving! Teach us your ways.";
+                        }
+                    }
+                }
+                function budgetReccs(){
+ 
+                    var net = income - expense;
+                    
+                    if(income === 0 && expense === 0)
+                {
+                    document.getElementById("budgetReccom").innerHTML = "No data yet, start tracking to unlock insights";
+                    return;
+                }
+                    if (net <= 0) {
+                        document.getElementById("budgetReccom").innerHTML = "DANGEROUS! Consider setting aside some income.";
+                    }
+                    else if(net <= 1000){
+                        document.getElementById("budgetReccom").innerHTML = "You're slightly winning, but don't celebrate in a mall yet";
+                    } else {
+                            document.getElementById("budgetReccom").innerHTML = "Solid financial control, you're building stability!";
+                        }
+                }
+ 
+                function topCategory(){
+                    var rows = localStorage.getItem("expenseRows");
+ 
+                    if (rows == null || rows == "")
+                {
+                    document.getElementById("topCategory").innerHTML =
+                    "No expense data yet";
+                    return;
+                }
+ 
+                var food = 0;
+                var transport = 0;
+                var education = 0;
+                var entertainment = 0;
+                var shopping = 0;
+ 
+                var word = "";
+ 
+                for(var i = 0; i < rows.length; i++)
+                {
+                    var ch = rows[i];
+                    if (ch != "<" && ch != ">" && ch != " " && ch != "/"){
+                        word += ch;
+                    }
+                    else {
+                        if (word == "Food & Dining" || word == "Food")
+                        {food++;}
+ 
+                        else if (word == "Transportation")
+                        {transport++;}
+ 
+                        else if (word == "Education")
+                        {education++;}
+ 
+                        else if (word == "Entertainment")
+                        {entertainment++;}
+ 
+                        else if (word == "Shopping")
+                        {shopping++;}
+ 
+                        word = "";
+                    }
+                }
+                var max = food;
+                var result = "Food is your main expense (no judgement...)";
+ 
+                if (transport > max) {max = transport; result = "Transportation is carrying your budget";}
+                if (education > max) {max = education; result = "Education is your biggest expense (at least it's a smart one)";}
+                if (entertainment > max) {max = entertainment; result = "Entertainment is running your wallet (it's fine to have less fun)";}
+                if (shopping > max) {max = shopping; result = "Shopping is your emotional support activity";}
+ 
+                document.getElementById("topCategory").innerHTML = result;
+ 
+                }
+                function spendingTrend(){
+                    var income = parseFloat(localStorage.getItem("totalIncome"));
+                    var expense = parseFloat(localStorage.getItem("totalExpense"));
+ 
+                    if(income == 0) {
+                        document.getElementById("spendingTrend").innerHTML = "No income data available. Share with us so we can turn your money story into a successful one";
+                        return;
+                    }
+                    var ratio = expense / income;
+ 
+                    if (ratio < 0.5) {
+                        document.getElementById("spendingTrend").innerHTML = "You're spending very responsibly! Future you says thanks";
+                    } else if (ratio < 1) {
+                        document.getElementById("spendingTrend").innerHTML = "You're actively using your income - just make sure to stay consistent.";
+                    } else {
+                        document.getElementById("spendingTrend").innerHTML = "Your wallet is screaming internally, but hey - awareness is step one. You can fix this!"
+                    }
+                }
+ 
+ 
+            </script>
+        </header>
+        <main>
+            <setion>
+                <div>
+                    <br>
+                    <br>
+                    <h1>Analysis Results</h1>
+                    <p>Your financial insights and spending patterns analysis</p>
+                </div>
+            </setion>
+ 
+            <section class="stats">
                 <table>
                     <tr class="firstRow">
                         <td>
                             <div>
                                 <img src="" alt="icon">
                                 <p>Total Income</p>
-                                <h3>AED ###.##</h3>
+                                <h3 id = "totalIncome">AED ###.##</h3>
                             </div>
                         </td>
                         <td>
                             <div>
                                 <img src="" alt="icon">
                                 <p>Total Expenses</p>
-                                <h3>AED ###.##</h3>
+                                <h3 id = "totalExpense">AED ###.##</h3>
                             </div>
                         </td>
                         <td>
                             <div>
                                 <img src="" alt="icon">
                                 <p>Net Savings</p>
-                                <h3>AED ###.##</h3>
+                                <h3 id = "netSavings">AED ###.##</h3>
                             </div>
                         </td>
                         <td>
                             <div>
                                 <img src="" alt="icon">
                                 <p>Savings Rate</p>
-                                <h3>AED ###.##</h3>
+                                <h3 id = "savingsRate">AED ###.##</h3>
                             </div>
                         </td>
                     </tr>
-
+ 
                     <tr class="secondRow">
                         <td colspan="2">
                             <div>
@@ -86,7 +318,7 @@
                                 <img src="" alt="chart">
                             </div>
                         </td>
-
+ 
                         <td colspan="2">
                             <div>
                                 <p>Monthly Trend</p>
@@ -94,7 +326,7 @@
                             </div>
                         </td>
                     </tr>
-
+ 
                     <tr class="thirdRow">
                         <td colspan="4">
                             <div>
@@ -104,12 +336,12 @@
                         </td>
                     </tr>
                 </table>
-			</setion>
+            </setion>
  
-			<section>
-			</setion>
+            <section>
+            </setion>
  
-			<section class="keyInsights">
+            <section class="keyInsights">
                 <table>
                     <tr>
                         <td><p>Key Insights</p></td>
@@ -118,13 +350,13 @@
                         <td>
                             <div>
                                 <p>Top Spending Category</p>
-                                <p>#######################</p>
+                                <p id = "topCategory">#######################</p>
                             </div>
                         </td>
                         <td>
                             <div>
                                 <p>Savings Progress</p>
-                                <p>#######################</p>
+                                <p id = "savingsProgress">#######################</p>
                             </div>
                         </td>
                     </tr>
@@ -132,54 +364,18 @@
                         <td>
                             <div>
                                 <p>Spending Trend</p>
-                                <p>#######################</p>
+                                <p id = "spendingTrend">#######################</p>
                             </div>
                         </td>
                         <td>
                             <div>
                                 <p>Budget Recommendation</p>
-                                <p>#######################</p>
+                                <p id = "budgetReccom">#######################</p>
                             </div>
                         </td>
                     </tr>
                 </table>
-			</setion>
- 
-		</main>
- 
- 
-		<footer>
-            <!-- logo -->
-            <h1>
-			<a href = "index.html"><img src = "" alt = "EduCents logo"></a>
-            </h1>
-            <!-- our social links -->
-            <div >
-                <a href = "https://discord.com/">
-                    <img src="" alt="discord">
-                </a>
-                <a href = "https://www.reddit.com/">
-                    <img src="" alt="reddit">
-                </a>
-                <a href = "https://github.com/">
-                    <img src="" alt="github">
-                </a>
-                <a href = "mailto:educents@gmail.com">
-                    <img src="" alt="email">
-                </a>
-                <a href= "https://www.instagram.com/">
-                    <img src="" alt="insta">
-                </a>
-                <a href= "https://www.facebook.com/">
-                    <img src="" alt="facebook">
-                </a>
-                    <a href= "https://x.com/?lang=en">
-                    <img src="" alt="x">
-                </a>
-            </div>
-            <!-- footer text -->
-            <p>Empowering students to build healthy financial habits for life.</p>
-            <p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>
-        </footer>
+            </section>
+        </main>
     </body>
 </html>

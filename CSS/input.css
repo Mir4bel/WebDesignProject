@@ -1,3 +1,20 @@
+
+
+body {
+    font-family: quicksand;
+    width: 100%;
+    background: url(../assets/lightpurplecat.jpg);
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+main {
+    width: 100%;
+    padding: 40px 0;
+}
 .boxTable {
     width: 90%;
     margin: auto;
@@ -6,99 +23,85 @@
  
 .boxTable td {
     width: 50%;
-    vertical-align: top; /*here*/
+ 
 }
-.box{
-    background: #e8a7df;
-    /* border: 1px solid #ddd; */
+.box {
+    background:  rgb(61, 41, 63);
     border-radius: 12px;
-    /* margin: 10px; */
+    margin: 10px;
     padding: 25px;
-    /* width: 100%; */
-    /* box-shadow: 0 2px 8px rgb(0,0,0,0.05); */
-    /* box-sizing: border-box; here */
+    width: 80%;
 }
 .inputField {
-    width: 95%;
+    width: 90%;
     padding: 10px;
-    margin-right: 10px;
     margin-top: 6px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
-select.inputField {
-   width:100%;
-   font-family: quicksand;
-}
 label {
+    float: left;
     font-weight: 500;
-    display: block;
     text-align: left;
     margin-top: 10px;
 }
 textarea{
-    height:90px;
-    resize: none;
     font-family: quicksand;
 }
-
-button:hover{
-    transform: scale(1.03);
-
-}
  
-button.blackBtn {
+.blackBtn {
     width: 100%;
     padding: 12px;
     margin-top: 15px;
-    background: black;
-    color: #e8a7df;
-    border: none;
-    /* cursor: pointer; */
+    background: rgb(227, 193, 246);
+    color:  rgb(61, 41, 63);
+    font-size: large;
 }
-button.whiteBtn{
+.whiteBtn {
     padding: 10px 20px;
     background: white;
-    border: 1px solid #ccc;
 }
-button.smallBlackBtn {
+.smallBlackBtn {
     padding: 10px 20px;
-    background: black;
-    color: #e8a7df;
-    border: none;
+    background: rgb(227, 193, 246);
+    color: black;
 }
 .bottom {
     width: 100%;
     margin-top: 40px;
     text-align: center;
 }
-/* .bottomButtons {
+.bottomButtons {
     margin-top: 20px;
-} */
-.entriesTable{
+}
+.entriesTable {
     width: 100%;
-    background: white;
+    background:  white;
     margin-top: 20px;
-    color: rgb(23, 23, 23);
+    color: black;
 }
  
 .entriesTable th {
-    background: #f2f2f2;
+    background: rgb(227, 193, 246);
     padding: 12px;
+    color: black;
 }
  
-.entriesTable td{
+.entriesTable td {
     padding: 12px;
 }
 .entriesBox{
     width:80%;
     margin:40px auto;
     padding:20px;
-    border:1px solid #ddd;
     border-radius:12px;
-    background:#e8a7df;
+    background: rgb(61, 41, 63);
 }
-.entriesTable tr:hover{
-    background: #fff4fd;
+.entriesTable tr:hover {
+    background:  rgb(61, 41, 63);
+    color: white;
 }
+ 
+ 
+ 
