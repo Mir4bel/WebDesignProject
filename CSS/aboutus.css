@@ -1,0 +1,63 @@
+body {
+    font-family: quicksand;
+    width: 100%;
+    background: url(../assets/Sky.gif);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    margin: 0;
+}
+
+.aboutHeader {
+    text-align: center;
+    padding: 40px;
+}
+
+.aboutSection {
+    padding: 30px 60px;
+}
+
+.memberBox {
+    background: rgb(139, 117, 160);
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.memberBox:hover {
+    transform: scale(1.05);
+}
+
+.memberBox img {
+    width: 120px;
+    background: rgb(199, 166, 230);
+}
+
+.metricBox {
+    background: rgb(139, 117, 160);
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.metricBox:hover {
+    transform: scale(1.05);
+}
+
+#journeyYears {
+    background: rgb(139, 117, 160);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+hr {
+    margin-left: 50px;
+    margin-right: 50px;
+    border-color: rgb(139, 117, 160);
+}

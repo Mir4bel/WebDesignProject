@@ -2,7 +2,6 @@ body {
     font-family: quicksand;
     width: 100%;
     background: url(../assets/starryNight.gif);
-    min-height: 500px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,17 +14,13 @@ section.stats div {
 }
  
 section.stats td{
-    background: rgb(61, 41, 63);
+background: rgb(199, 166, 230);
     width: 20%;
     height: 200px;
 
 }
  
-tr.firstRow p {
-    padding: 0px;
-    font-size: smaller;
-    margin: 14px 0 6px 0px;
-}
+
  
 tr.secondRow div, tr.thirdRow div{
     height: 200px;
@@ -51,12 +46,13 @@ section.stats table{
 }
  
 section.keyInsights table{
-    background: rgb(61, 41, 63);    
+    background: none;  
     margin-left: 9.2%;
     margin-right: 9.2%;
     width: 81.6%;
     border-spacing: 30px 20px;
     text-align: left;
+    border-radius: 12px;
 }
  
 section.keyInsights p{
@@ -64,10 +60,23 @@ section.keyInsights p{
         padding: 1px;
 }
 section.keyInsights td{
+    
     width: 50%;
 }
 section.keyInsights td div {
-    background: rgb(191, 168, 194);
+    background: rgb(170, 142, 174);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+section.keyInsights td {
+    text-align: center;
+}
+
+section.keyInsights td img {
+    padding: 10px;
+    width: 60px;
 }
  
 
@@ -78,15 +87,15 @@ section.keyInsights td div {
 }
 
 .personalityCard {
-    background: rgb(61, 41, 63);
+    background: rgb(139, 117, 160);
     padding: 25px;
     text-align: center;
 }
 
 .personalityCard img {
-    width: 120px;
-    height: 120px;
-    background: rgb(191, 186, 194);
+    width: 200px;
+    height: 200px;
+    background:none;
     margin-bottom: 10px;
 }
 
@@ -103,9 +112,9 @@ section.keyInsights td div {
 }
 
 .scoreBox img {
-    width: 40px;
-    height: 40px;
-    background: rgb(191, 186, 194);
+    width: 150px;
+    height: 150px;
+    background: none;
 
 }
 
@@ -115,7 +124,7 @@ section.keyInsights td div {
 }
 
 .traitsBox {
-    background: rgb(61, 41, 63);
+    background: rgb(141, 117, 163);
     padding: 25px;
 }
 
@@ -133,7 +142,6 @@ section.keyInsights td div {
     width: 100%;
     height: 10px;
     background: white;
-    overflow: hidden;
 }
 
 .progressFill {
@@ -150,4 +158,62 @@ section.keyInsights td div {
 .traitsSection {
     margin-top: 40px; 
     margin-bottom: 40px;
+}
+
+ 
+.articleBox h4{
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.articleBox p{
+    margin: 5px 0;
+    padding: 0;
+}
+ 
+section.featured{
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+ 
+section.featured table{
+    width: 84%;
+    margin: 0 auto;
+    border-spacing: 20px;
+}
+ 
+section.featured td{
+    width: 25%;
+}
+ 
+section.featured td div{
+    background: rgb(199, 166, 230);
+    padding: 15px;
+}
+ 
+section.featured img{
+    width: 100%;
+    height: 180px;
+    background: rgb(191,186,194);
+    border-radius: 12px;
+}
+section.featured h2{
+    margin: 0;
+    padding-bottom: 10px;
+}
+section.featured h4{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+section.featured p{
+    margin: 0;
+}
+a{
+    color: rgb(69, 40, 80);
+}
+.articleBox{
+    color: black;
+    background:rgb(227, 193, 246);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
 }
