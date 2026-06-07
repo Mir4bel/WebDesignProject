@@ -1,6 +1,11 @@
-/* html{
-    cursor: url(../assets/cursor.png),  auto;
-} */
+#header img{
+    src: url(../assets/EducentsLogo.png);
+    width: 100px;
+}
+
+.footerimg {
+    width: 100px;
+}
 
 body {
     font-family: quicksand;
@@ -67,7 +72,6 @@ footer a img:hover{
 
 .font-light{
     font-size: small;
-    color: rgb(46, 46, 46);
 }
 
 
