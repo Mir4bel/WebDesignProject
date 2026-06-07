@@ -55,7 +55,7 @@ marquee {
     padding: 160px;
     height: 300px;
     text-shadow: 1px 1px #000000, 0 0 10px #000000;
-    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
+    background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
 }
 .parallax2 {
     background: url(../assets/winter-twigs-ezgif.com-effects.gif);
