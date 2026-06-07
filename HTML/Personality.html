@@ -10,9 +10,425 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        
+        <script>
+
+            function loadPersonality(){
+
+                var income = parseFloat(localStorage.getItem("totalIncome"));
+                var expense = parseFloat(localStorage.getItem("totalExpense"));
+                var rows = localStorage.getItem("expenseRows");
+
+                if(isNaN(income)) income = 0;
+                if(isNaN(expense)) expense = 0;
+                if(rows == null) rows = "";
+
+                calculatePersonality(income, expense, rows);
+            }
+
+
+            function calculatePersonality(income, expense, rows){
+
+                var savingsRate = 0;
+
+                if(income > 0){
+                    savingsRate = ((income - expense) / income) * 100;
+                }
+
+                if(savingsRate < 0){
+                    savingsRate = 0;
+                }
+
+                calculateScores(savingsRate, rows);
+            }
+
+
+            function calculateScores(savingsRate, rows){
+
+                var planningScore;
+                var savingTendency;
+                var riskTolerance = 5;
+
+                var food = 0;
+                var transport = 0;
+                var education = 0;
+                var entertainment = 0;
+                var shopping = 0;
+
+                if(savingsRate >= 40){
+                    planningScore = 8.5;
+                }
+                else if(savingsRate >= 25){
+                    planningScore = 7.5;
+                }
+                else if(savingsRate >= 10){
+                    planningScore = 6.5;
+                }
+                else if(savingsRate >= 0){
+                    planningScore = 5.5;
+                }
+                else{
+                    planningScore = 3.5;
+                }
+
+
+                savingTendency = savingsRate / 10;
+
+                if(savingTendency > 10){
+                    savingTendency = 10;
+                }
+
+
+                /* Count expense categories */
+
+                var word = "";
+
+                for(var i = 0; i < rows.length; i++){
+
+                    var ch = rows[i];
+
+                    if(ch != "<" && ch != ">" && ch != "/" && ch != " "){
+                        word += ch;
+                    }
+                    else{
+
+                        if(word == "Food&Dining" || word == "Food"){
+                            food++;
+                        }
+
+                        else if(word == "Transportation"){
+                            transport++;
+                        }
+
+                        else if(word == "Education"){
+                            education++;
+                        }
+
+                        else if(word == "Entertainment"){
+                            entertainment++;
+                        }
+
+                        else if(word == "Shopping"){
+                            shopping++;
+                        }
+
+                        word = "";
+                    }
+                }
+
+
+                /* Risk */
+
+                if(entertainment >= 2){
+                    riskTolerance++;
+                }
+
+                if(shopping >= 2){
+                    riskTolerance++;
+                }
+
+                if(education >= 2){
+                    riskTolerance--;
+                }
+
+                if(savingsRate > 40){
+                    riskTolerance--;
+                }
+
+                if(riskTolerance < 3){
+                    riskTolerance = 3;
+                }
+
+                if(riskTolerance > 9){
+                    riskTolerance = 9;
+                }
+
+
+                displaySummary(
+                    planningScore,
+                    savingTendency,
+                    riskTolerance,
+                    savingsRate,
+                    entertainment,
+                    shopping,
+                    education
+                );
+
+            }
+
+
+            function displaySummary(planning, saving, risk, savingsRate,
+                                    entertainment, shopping, education){
+
+                /* Summary scores */
+
+                document.getElementById("planningScore").innerHTML =
+                    planning.toFixed(1) + "/10";
+
+                document.getElementById("savingTendency").innerHTML =
+                    saving.toFixed(1) + "/10";
+
+                document.getElementById("riskTolerance").innerHTML =
+                    risk.toFixed(1) + "/10";
+
+
+                /* Personality Type */
+
+                var personality;
+                var description;
+
+
+                if(planning >= 8 && saving >= 6){
+
+                    personality = "The Mindful Spender";
+
+                    description =
+                    "You demonstrate thoughtful financial decision-making with a balanced approach to saving and spending. You prioritize essential expenses while maintaining room for occasional treats.";
+
+                }
+                else if(saving >= 8 && risk <= 4){
+
+                    personality = "The Cautious Saver";
+
+                    description =
+                    "You value security and consistently prioritize saving. You carefully consider financial decisions before taking action.";
+
+                }
+                else if(planning >= 7){
+
+                    personality = "The Goal-Oriented Planner";
+
+                    description =
+                    "You make intentional choices and focus on achieving long-term financial goals through discipline and planning.";
+
+                }
+                else if(risk >= 7){
+
+                    personality = "The Free Spirit";
+
+                    description =
+                    "You enjoy flexibility and experiences, although developing stronger financial habits could improve stability.";
+
+                }
+                else{
+
+                    personality = "The Balanced Budgeter";
+
+                    description =
+                    "You maintain a practical approach to money and strive for financial stability through balanced decision-making.";
+
+                }
+
+
+                document.getElementById("personalityType").innerHTML =
+                    personality;
+
+                document.getElementById("personalityDescription").innerHTML =
+                    description;
+
+
+                calculateTraits(
+                    planning,
+                    savingsRate,
+                    entertainment,
+                    shopping,
+                    education
+                );
+            }
+
+
+
+            function calculateTraits(planning,
+                                    savingsRate,
+                                    entertainment,
+                                    shopping,
+                                    education){
+
+                var budget =
+                    Math.round(Math.min(100, savingsRate + 30));
+
+                var impulse =
+                    Math.max(0, 100 - (shopping * 15));
+
+                var focus =
+                    Math.min(100,
+                    Math.round((education * 10) + savingsRate));
+
+                var confidence =
+                    Math.round(planning * 8);
+
+                var social =
+                    Math.min(100,
+                    entertainment * 15);
+
+                var tech =
+                    70 + ((shopping + entertainment) % 21);
+
+
+                setTrait("budget", budget);
+                setTrait("impulse", impulse);
+                setTrait("focus", focus);
+                setTrait("confidence", confidence);
+                setTrait("social", social);
+                setTrait("tech", tech);
+
+
+                generateStrengths(
+                    budget,
+                    impulse,
+                    focus,
+                    confidence
+                );
+
+                generateGrowth(
+                    confidence,
+                    social,
+                    impulse
+                );
+
+                generateRecommendations(
+                    confidence,
+                    savingsRate
+                );
+
+                generateComparison(
+                    planning,
+                    savingsRate,
+                    impulse
+                );
+
+            }
+
+
+            function setTrait(name, value){
+
+                document.getElementById(name + "Trait").innerHTML =
+                    value + "%";
+
+                document.getElementById(name + "Bar").style.width =
+                    value + "%";
+            }
+
+
+
+            function generateStrengths(budget,
+                                    impulse,
+                                    focus,
+                                    confidence){
+
+                var html = "";
+
+                if(budget >= 70){
+                    html += "<li>Excellent at creating and sticking to budgets</li>";
+                }
+
+                if(impulse >= 70){
+                    html += "<li>Strong resistance to impulse spending</li>";
+                }
+
+                if(focus >= 70){
+                    html += "<li>Good at prioritizing long-term goals</li>";
+                }
+
+                if(confidence >= 60){
+                    html += "<li>Comfortable making financial decisions</li>";
+                }
+
+                if(html == ""){
+                    html = "<li>You are becoming more aware of your financial habits.</li>";
+                }
+
+                document.getElementById("strengthList").innerHTML =
+                    html;
+            }
+
+
+
+            function generateGrowth(confidence,
+                                    social,
+                                    impulse){
+
+                var html = "";
+
+                if(confidence < 60){
+                    html += "<li>Build confidence in financial decision-making</li>";
+                }
+
+                if(social > 40){
+                    html += "<li>Reduce the influence of social spending</li>";
+                }
+
+                if(impulse < 60){
+                    html += "<li>Practice resisting emotional purchases</li>";
+                }
+
+                html += "<li>Continue learning about smart saving strategies</li>";
+
+                document.getElementById("growthList").innerHTML =
+                    html;
+            }
+
+
+
+            function generateRecommendations(confidence,
+                                            savingsRate){
+
+                var text;
+
+                if(savingsRate < 20){
+
+                    text =
+                    "Focus on building an emergency fund and identifying areas where small spending reductions can improve your savings.";
+
+                }
+                else if(confidence < 60){
+
+                    text =
+                    "Continue building financial confidence through education and exploring low-risk opportunities.";
+
+                }
+                else{
+
+                    text =
+                    "Maintain your current habits and consider exploring long-term investment and wealth-building strategies.";
+
+                }
+
+
+                document.getElementById("recommendationText").innerHTML =
+                    text;
+            }
+
+
+
+            function generateComparison(planning,
+                                        savingsRate,
+                                        impulse){
+
+                document.getElementById("budgetRank").innerHTML =
+                    "Top " + (100 - Math.round(planning * 10)) + "%";
+
+                document.getElementById("savingRank").innerHTML =
+                    "Top " + (100 - Math.round(savingsRate)) + "%";
+
+                document.getElementById("impulseRank").innerHTML =
+                    "Top " + (100 - impulse) + "%";
+
+
+                document.getElementById("match1").innerHTML =
+                    (60 + Math.round(planning)) + "% match";
+
+                document.getElementById("match2").innerHTML =
+                    (65 + Math.round(savingsRate / 5)) + "% match";
+
+                document.getElementById("match3").innerHTML =
+                    (55 + Math.round(planning * 2)) + "% match";
+            }
+
+        </script>
     </head>
  
-    <body>
+    <body onload="loadPersonality()">
         <header id="header">
             <div> <!--our logo and nav links-->
                 <table class="headerTable" style="width: 100%;">
@@ -36,25 +452,348 @@
             </div>
         </header>
 		
-		<main>
-			<section>
-				<div>
-					<br>
-					<h1>Your Financial Personality</h1>
-					<p>caption</p>
-				</div>
-			</section>
- 
-			<section>
-			</section>
- 
-			<section>
-			</section>
- 
-			<section>
-			</section>
- 
-		</main>
+        <main onload="loadPersonality()">
+
+            <section>
+                <div>
+                    <br>
+                    <h1>Your Financial Personality</h1>
+                    <p>Discover your unique financial behavior patterns and spending style</p>
+                </div>
+            </section>
+
+
+            <!-- Personality Summary -->
+            <section class="personalitySummary">
+
+                <div class="personalityCard">
+
+                    <img src="" alt="personality icon">
+
+                    <h2 id="personalityType">The Mindful Spender</h2>
+
+                    <p id="personalityDescription">
+                        Personality description goes here.
+                    </p>
+
+                    <table class="scoreTable">
+                        <tr>
+
+                            <td>
+                                <div class="scoreBox">
+
+                                    <img src="" alt="icon">
+
+                                    <p>Planning Score</p>
+
+                                    <h3 id="planningScore">0/10</h3>
+
+                                    <p id="planningCaption">
+                                        Excellent planning skills
+                                    </p>
+
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="scoreBox">
+
+                                    <img src="" alt="icon">
+
+                                    <p>Saving Tendency</p>
+
+                                    <h3 id="savingTendency">0/10</h3>
+
+                                    <p id="savingCaption">
+                                        Strong saving habits
+                                    </p>
+
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="scoreBox">
+
+                                    <img src="" alt="icon">
+
+                                    <p>Risk Tolerance</p>
+
+                                    <h3 id="riskTolerance">0/10</h3>
+
+                                    <p id="riskCaption">
+                                        Moderate risk approach
+                                    </p>
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- Trait Breakdown -->
+            <section class="traitsSection">
+
+                <div class="traitsBox">
+
+                    <h2>
+                        <img src="" alt="icon">
+                        Personality Traits Breakdown
+                    </h2>
+
+
+                    <div class="trait">
+
+                        <div class="traitHeader">
+                            <span>Budget Consciousness</span>
+                            <span id="budgetTrait">0%</span>
+                        </div>
+
+                        <div class="progressBar">
+                            <div class="progressFill" id="budgetBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="trait">
+
+                        <div class="traitHeader">
+                            <span>Impulse Control</span>
+                            <span id="impulseTrait">0%</span>
+                        </div>
+
+                        <div class="progressBar">
+                            <div class="progressFill" id="impulseBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="trait">
+
+                        <div class="traitHeader">
+                            <span>Long-term Focus</span>
+                            <span id="focusTrait">0%</span>
+                        </div>
+
+                        <div class="progressBar">
+                            <div class="progressFill" id="focusBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="trait">
+
+                        <div class="traitHeader">
+                            <span>Financial Confidence</span>
+                            <span id="confidenceTrait">0%</span>
+                        </div>
+
+                        <div class="progressBar">
+                            <div class="progressFill" id="confidenceBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="trait">
+
+                        <div class="traitHeader">
+                            <span>Social Spending Influence</span>
+                            <span id="socialTrait">0%</span>
+                        </div>
+
+                        <div class="progressBar">
+                            <div class="progressFill" id="socialBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="trait">
+
+                        <div class="traitHeader">
+                            <span>Technology Adoption</span>
+                            <span id="techTrait">0%</span>
+                        </div>
+
+                        <div class="progressBar">
+                            <div class="progressFill" id="techBar"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Meaning Section -->
+            <section class="meaningSection">
+
+                <div class="meaningBox">
+
+                    <h2>
+                        <img src="" alt="icon">
+                        What This Means for You
+                    </h2>
+
+
+                    <table class="meaningTable">
+
+                        <tr>
+
+                            <td>
+
+                                <h3>Your Strengths</h3>
+
+                                <ul id="strengthList">
+
+                                    <li>Loading...</li>
+
+                                </ul>
+
+                            </td>
+
+
+                            <td>
+
+                                <h3>Areas for Growth</h3>
+
+                                <ul id="growthList">
+
+                                    <li>Loading...</li>
+
+                                </ul>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+
+                    <div class="recommendationBox">
+
+                        <h4>Recommended Next Steps</h4>
+
+                        <p id="recommendationText">
+                            Personalized recommendations will appear here.
+                        </p>
+
+
+                        <div class="recommendationButtons">
+
+                            <a href="Tips.html">
+                                <button class="smallBlackBtn">
+                                    View Personalized Tips
+                                </button>
+                            </a>
+
+                            <button class="whiteBtn" onclick="window.print()">
+                                Download Report
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Compare -->
+            <section class="compareSection">
+
+                <div class="compareBox">
+
+                    <h2>
+                        <img src="" alt="icon">
+                        How You Compare
+                    </h2>
+
+
+                    <table class="compareTable">
+
+                        <tr>
+
+                            <td>
+
+                                <div class="compareCard">
+
+                                    <h3>Compared to College Students</h3>
+
+                                    <table class="rankingTable">
+
+                                        <tr>
+                                            <td>Budget Planning</td>
+                                            <td id="budgetRank">Top 50%</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Saving Rate</td>
+                                            <td id="savingRank">Top 50%</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Impulse Control</td>
+                                            <td id="impulseRank">Top 50%</td>
+                                        </tr>
+
+                                    </table>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="compareCard">
+
+                                    <h3>Similar Personality Types</h3>
+
+                                    <table class="rankingTable">
+
+                                        <tr>
+                                            <td>The Cautious Saver</td>
+                                            <td id="match1">0% match</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>The Balanced Budgeter</td>
+                                            <td id="match2">0% match</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>The Goal-Oriented Planner</td>
+                                            <td id="match3">0% match</td>
+                                        </tr>
+
+                                    </table>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
  
  
 		<footer>
@@ -65,27 +804,28 @@
             <!-- our social links -->
             <div >
                 <a href = "https://discord.com/">
-                    <img src="" alt="discord">
+                    <img src="../assets/discord-logo 1.png" width="50" height="50" alt="discord">
                 </a>
                 <a href = "https://www.reddit.com/">
-                    <img src="" alt="reddit">
+                    <img src="../assets/reddit 1.png" width="50" height="50" alt="reddit">
                 </a>
                 <a href = "https://github.com/">
-                    <img src="" alt="github">
+                    <img src="../assets/github 1.png" width="50" height="50" alt="github">
                 </a>
                 <a href = "mailto:educents@gmail.com">
-                    <img src="" alt="email">
+                    <img src="../assets/icons8-email-symbol-50.png" width="45" height="45" alt="email">
                 </a>
                 <a href= "https://www.instagram.com/">
-                    <img src="" alt="insta">
+                    <img src="../assets/icons8-instagram-30.png" width="50" height="50" alt="insta">
                 </a>
                 <a href= "https://www.facebook.com/">
-                    <img src="" alt="facebook">
+                    <img src="../assets/icons8-facebook-50 1.png" width="50" height="50" alt="facebook">
                 </a>
                     <a href= "https://x.com/?lang=en">
-                    <img src="" alt="x">
+                    <img src="../assets/icons8-x-50 1.png" width="50" height="50" alt="x">
                 </a>
             </div>
+ 
             <!-- footer text -->
             <p>Empowering students to build healthy financial habits for life.</p>
             <p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>

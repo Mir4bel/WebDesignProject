@@ -15,6 +15,20 @@
             .articleBox:hover{
                 transform: scale(1.05);
             }
+            input{  
+                padding: 6pt 30pt;
+                margin-top: 10pt;
+                font-weight: bold;
+                font-size: large;
+                background-color:white;;
+                color: #4c3378;
+                border-radius: 80pt;
+                border: 1pt #4c3378 solid;
+            }
+            input:hover{
+                background-color: rgb(250, 225, 253);
+                border: 1pt #ECE6DD solid;
+            }
         </style>
         <script>
             function searchGoogle(event){
@@ -25,27 +39,7 @@
                 }
             }
         </script>
-
-        <style>
-            input{  
-                padding: 6pt 30pt;
-                margin-top: 10pt;
-                font-weight: bold;
-                font-size: large;
-                border: none;
-                background-color:#ECE6DD;
-                color: #5c3378;
-                border-radius: 80pt;
-                border: 1pt #4c3378 solid; 
-            }
-
-            input:hover{
-                background-color: rgb(205, 168, 210);
-                color: #ECE6DD;
-                border: 1pt #ECE6DD solid; 
-            }
-
-        </style>
+    
     </head>
  
     <body>
@@ -54,25 +48,29 @@
                 <table class="headerTable" style="width: 100%;">
                     <tr>
                         <td style="max-width: 60px;" >
-                            <a href = "index.html"><img src = "" alt = "EduCents logo"></a>
+                            <a href = "#header"><img src = "" alt = "EduCents logo"></a>
                         </td>
-                        <td>
+                        <td >
                             <nav>
-							<a href = "index.html">Home</a>
-							<a href = "Input.html">Input</a>
+                            <a href = "#header">Home</a>
+                            <a href = "Input.html">Input</a>
                             <a href = "Analysis.html">Analysis</a>
                             <a href = "Personality.html">Personality</a>
-                            <a href = "#header" id="selected">Tips</a>
+                            <a href = "Tips.html" id ="selected">Tips</a>
                             <a href = "Support.html">Support</a>
                             <a href = "AboutUs.html">About Us</a>
                             </nav>
+                        </td>
+                        <td style="text-align: right;" >
                         </td>
                     </tr>
                 </table>                
             </div>
         </header>
-		
-		<main>
+ 
+ 
+ 
+        <main>
             <section class ="tipsHeader">
                 <div>
                     <h1>Financial Tips & Advice</h1>
@@ -80,14 +78,14 @@
                 </div>
             </section>
             <hr style="margin-left: 50px; margin-right: 50px;">
- 
-            <section class = "searchSection">
- 
-                <input type = "text" id = "searchBox" placeholder="Search tips and advice in Google Scholar" onkeypress="searchGoogle(event)">
             
+            <section class = "searchSection">
+            
+                <input type = "text" id = "searchBox" placeholder="Search tips and advice in Google Scholar" onkeypress="searchGoogle(event)">
+                        
             </section>
             <hr style="margin-left: 50px; margin-right: 50px;">
- 
+            
             <section class ="tipCategories">
                 <table>
                     <tr>
@@ -229,7 +227,7 @@
                                 </div>
             
                                 <div class="articleBox">
-                                    <h4>Robo-Advisors Explainedt</h4>
+                                    <h4>Robo-Advisors Explained</h4>
                                     <p>Automated investing for beginners</p>
                                     <a href= "https://www.investopedia.com/terms/r/roboadvisor-roboadviser.asp" target="_blank">
                                         20 min read
@@ -249,7 +247,7 @@
                 </table>
             </section>
             <hr style="margin-left: 50px; margin-right: 50px;">
- 
+            
             <section class = "featured">
                 <table>
                     <tr>
@@ -288,9 +286,9 @@
                     </tr>
                 </table>
             </section>
-		</main>
- 
- 
+        </main>
+
+  
 		<footer>
             <!-- logo -->
             <h1>
@@ -299,27 +297,28 @@
             <!-- our social links -->
             <div >
                 <a href = "https://discord.com/">
-                    <img src="" alt="discord">
+                    <img src="../assets/discord-logo 1.png" width="50" height="50" alt="discord">
                 </a>
                 <a href = "https://www.reddit.com/">
-                    <img src="" alt="reddit">
+                    <img src="../assets/reddit 1.png" width="50" height="50" alt="reddit">
                 </a>
                 <a href = "https://github.com/">
-                    <img src="" alt="github">
+                    <img src="../assets/github 1.png" width="50" height="50" alt="github">
                 </a>
                 <a href = "mailto:educents@gmail.com">
-                    <img src="" alt="email">
+                    <img src="../assets/icons8-email-symbol-50.png" width="45" height="45" alt="email">
                 </a>
                 <a href= "https://www.instagram.com/">
-                    <img src="" alt="insta">
+                    <img src="../assets/icons8-instagram-30.png" width="50" height="50" alt="insta">
                 </a>
                 <a href= "https://www.facebook.com/">
-                    <img src="" alt="facebook">
+                    <img src="../assets/icons8-facebook-50 1.png" width="50" height="50" alt="facebook">
                 </a>
                     <a href= "https://x.com/?lang=en">
-                    <img src="" alt="x">
+                    <img src="../assets/icons8-x-50 1.png" width="50" height="50" alt="x">
                 </a>
             </div>
+ 
             <!-- footer text -->
             <p>Empowering students to build healthy financial habits for life.</p>
             <p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>

@@ -58,8 +58,10 @@ footer a {
     color: white;
 }
 
-footer a:hover{
-    font-size: larger;
+footer a img:hover{
+    width: 52px;
+    height: auto;
+
 }
 
 

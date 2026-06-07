@@ -10,9 +10,87 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <style>
+    
+            body{
+                font-family: quicksand;
+                margin:0;
+
+                background-color:#111111;
+            }
+    
+            .aboutHeader{
+                text-align:center;
+                padding:40px;
+            }
+    
+            .aboutSection{
+                padding:30px 60px;
+            }
+    
+            .memberBox{
+                border:1px solid #4c3378;
+                background-color:#4c3378;
+                padding:20px;
+                margin:15px;
+                text-align:center;
+                transition:0.3s;
+            }
+    
+            .memberBox:hover{
+                transform:scale(1.05);
+            }
+    
+            .metricBox{
+                border:1px solid #4c3378;
+                background-color:#4c3378;
+                padding:20px;
+                margin:10px;
+                text-align:center;
+                transition:0.3s;
+            }
+    
+            .metricBox:hover{
+                transform:scale(1.05);
+            }
+    
+    
+            hr{
+                margin-left:50px;
+                margin-right:50px;
+            }
+    
+        </style>
+    
+        <script>
+    
+            function showJourney()
+            {
+                var output = "";
+    
+                for(var year = 2025; year <= 2026; year++)
+                {
+                    if(year == 2025)
+                    {
+                        output += "<h4>" + year + "</h4>";
+                        output += "<p>EduCents project idea was created.</p>";
+                    }
+    
+                    if(year == 2026)
+                    {
+                        output += "<h4>" + year + "</h4>";
+                        output += "<p>Expense tracking and personality analysis features were completed.</p>";
+                    }
+                }
+    
+                document.getElementById("journeyYears").innerHTML = output;
+            }
+    
+        </script>
+    
     </head>
  
-    <body>
+    <body onload="showJourney()">
         <header id="header">
             <div> <!--our logo and nav links-->
                 <table class="headerTable" style="width: 100%;">
@@ -36,25 +114,252 @@
             </div>
         </header>
 		
-		<main>
-			<section>
-				<div>
-					<br>
-					<h1>About EduCents</h1>
-					<p>caption</p>
-				</div>
-			</section>
+        <main>
+        
+            <section class="aboutHeader">
+        
+                <h1>About EduCents</h1>
+        
+                <p>
+                    Empowering students to build healthy financial habits for life
+                </p>
+        
+            </section>
+        
+            <hr>
+        
+        
+            <section class="aboutSection">
+        
+                <table style="width:100%;">
+        
+                    <tr>
+        
+                        <td style="width:50%;">
+        
+                            <h2>Our Mission</h2>
+        
+                            <p>
+                                We believe every student deserves access to financial
+                                education and tools that help them understand spending
+                                patterns, develop healthy money habits and build a
+                                foundation for long-term financial success.
+                            </p>
+        
+                            <p>
+                                EduCents combines behavioral analysis with practical
+                                expense tracking to provide personalized insights
+                                beyond simple budgeting.
+                            </p>
+        
+                        </td>
+        
+                        <td style="width:50%;">
+        
+                            <h2>Our Values</h2>
+        
+                            <ul>
+                                <li>
+                                    <b>Transparency</b><br>
+                                    Clear and honest financial insights.
+                                </li>
+        
+                                <br>
+        
+                                <li>
+                                    <b>Accessibility</b><br>
+                                    Financial education for every student.
+                                </li>
+        
+                                <br>
+        
+                                <li>
+                                    <b>Growth</b><br>
+                                    Encouraging continuous improvement.
+                                </li>
+                            </ul>
+        
+                        </td>
+        
+                    </tr>
+        
+                </table>
+        
+            </section>
+        
+            <hr>
+        
+            <!-- Team -->
+        
+            <section class="aboutSection">
+        
+                <h2 style="text-align:center;">Meet Our Team</h2>
+        
+                <p style="text-align:center;">
+                    Dedicated students committed to financial wellness
+                </p>
+        
+                <table style="width:100%;">
+        
+                    <tr>
+        
+                        <td>
+        
+                            <div class="memberBox">
+        
+                                <img src="assets/member1.png"
+                                    alt="Member 1"
+                                    width="120">
+        
+                                <h3>Mira</h3>
+        
+                                <p><b>2nd Year SWE student</b></p>
+        
+                                <p>
+                                    Responsible for financial content,
+                                    planning and project management.
+                                </p>
+        
+                            </div>
+        
+                        </td>
+        
+                        <td>
+        
+                            <div class="memberBox">
+        
+                                <img src="assets/member2.png"
+                                    alt="Member 2"
+                                    width="120">
+        
+                                <h3>Tasnim</h3>
+        
+                                <p><b>2nd Year SWE student</b></p>
+        
+                                <p>
+                                    No.1 victim of overpriced iced coffee that breaks the budget.
+                                </p>
+        
+                            </div>
+        
+                        </td>
+        
+                    </tr>
+        
+                </table>
+        
+            </section>
+        
+            <hr>
+        
+            <!-- Journey + Metrics -->
+        
+            <section class="aboutSection">
+        
+                <table style="width:100%;">
+        
+                    <tr>
+        
+                        <td style="width:50%;">
+        
+                            <h2>Our Journey</h2>
+        
+                            <div id="journeyYears"></div>
+        
+                        </td>
+        
+                        <td style="width:50%;">
+        
+                            <h2>Project Metrics</h2>
+        
+                            <table style="width:100%;">
+        
+                                <tr>
+        
+                                    <td>
+        
+                                        <div class="metricBox">
+        
+                                            <h1>2</h1>
+        
+                                            <p>Team Members</p>
+        
+                                        </div>
+        
+                                    </td>
+        
+                                    <td>
+        
+                                        <div class="metricBox">
+        
+                                            <h1>4</h1>
+        
+                                            <p>Main Features</p>
+        
+                                        </div>
+        
+                                    </td>
+        
+                                </tr>
+        
+                                <tr>
+        
+                                    <td>
+        
+                                        <div class="metricBox">
+        
+                                            <h1>100+</h1>
+        
+                                            <p>Test Transactions</p>
+        
+                                        </div>
+        
+                                    </td>
+        
+                                    <td>
+        
+                                        <div class="metricBox">
+        
+                                            <h1>1</h1>
+        
+                                            <p>Web Application</p>
+        
+                                        </div>
+        
+                                    </td>
+        
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="metricBox">
+                                
+                                            <h3>Student Testimonial</h3>
+                                
+                                            <p style="font-style:italic;">
+                                                "EduCents helped me understand my spending habits and save
+                                                over AED 2,000 in my first semester. The personality insights were eye-opening."
+                                            </p>
+                                
+                                            <p>
+                                                <em>- Rai H., Abu Dhabi University</em>
+                                            </p>
+                                
+                                        </div>
+                                    </td>
+                                </tr>
+        
+                            </table>
+        
+                        </td>
+        
+                    </tr>
+        
+                </table>
+        
+            </section>
+        
+        </main>
  
-			<section>
-			</section>
- 
-			<section>
-			</section>
- 
-			<section>
-			</section>
- 
-		</main>
  
  
 		<footer>
@@ -65,27 +370,28 @@
             <!-- our social links -->
             <div >
                 <a href = "https://discord.com/">
-                    <img src="" alt="discord">
+                    <img src="../assets/discord-logo 1.png" width="50" height="50" alt="discord">
                 </a>
                 <a href = "https://www.reddit.com/">
-                    <img src="" alt="reddit">
+                    <img src="../assets/reddit 1.png" width="50" height="50" alt="reddit">
                 </a>
                 <a href = "https://github.com/">
-                    <img src="" alt="github">
+                    <img src="../assets/github 1.png" width="50" height="50" alt="github">
                 </a>
                 <a href = "mailto:educents@gmail.com">
-                    <img src="" alt="email">
+                    <img src="../assets/icons8-email-symbol-50.png" width="45" height="45" alt="email">
                 </a>
                 <a href= "https://www.instagram.com/">
-                    <img src="" alt="insta">
+                    <img src="../assets/icons8-instagram-30.png" width="50" height="50" alt="insta">
                 </a>
                 <a href= "https://www.facebook.com/">
-                    <img src="" alt="facebook">
+                    <img src="../assets/icons8-facebook-50 1.png" width="50" height="50" alt="facebook">
                 </a>
                     <a href= "https://x.com/?lang=en">
-                    <img src="" alt="x">
+                    <img src="../assets/icons8-x-50 1.png" width="50" height="50" alt="x">
                 </a>
             </div>
+ 
             <!-- footer text -->
             <p>Empowering students to build healthy financial habits for life.</p>
             <p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>

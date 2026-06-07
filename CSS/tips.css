@@ -32,14 +32,10 @@ section.tipCategories table{
     border-spacing: 25px;
 }
  
-section.tipCategories td{
-    width: 50%;
-    vertical-align: top;
-}
- 
 section.tipCategories td {
    background: rgb(61,41,63);
    padding: 20px;
+   width: 50%;
 }
 section.tipCategories h2{
    margin-top: 0;
@@ -83,7 +79,7 @@ section.featured img{
     height: 180px;
     background: rgb(191,186,194);
 }
-section.features h2{
+section.featured h2{
     margin: 0;
     padding-bottom: 10px;
 }
@@ -105,7 +101,7 @@ a{
     margin-top: 15px;
 }
 body{
-    background: url(../assets/PurpleCat2.jpg);
+    background: url(../assets/purpletrain.gif);
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
