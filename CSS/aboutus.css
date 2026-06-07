@@ -26,6 +26,7 @@ body {
     text-align: center;
     border-radius: 12px;
     transition: 0.3s;
+    width: 500px;
 }
 
 .memberBox:hover {
@@ -34,7 +35,7 @@ body {
 
 .memberBox img {
     width: 120px;
-    background: rgb(199, 166, 230);
+    background: none;
 }
 
 .metricBox {
@@ -61,3 +62,4 @@ hr {
     margin-right: 50px;
     border-color: rgb(139, 117, 160);
 }
+
