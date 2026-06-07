@@ -27,158 +27,157 @@
  
         </style>
     
-		<script>
-			var incomeRows;
-			var expenseRows;
-		
-			var header = "<tr>" +
-				"<th>Type</th>" +
-				"<th>Category</th>" +
-				"<th>Description</th>" +
-				"<th>Amount</th>" +
-				"<th>Date</th>";
-				
-			function addIncome(){
-				var source = document.getElementById("incomeSource").value;
-				var amount = parseFloat(document.getElementById("incomeAmt").value);
-				
-					if (isNaN(amount)) {
-						return;
-					}
-		
-				var date = document.getElementById("incomeDate").value;
-				var notes = document.getElementById("incomeNotes").value;
-		
-				incomeRows =
-				"<tr class='incomeRows'>" +
-				"<td>Income</td>" +
-				"<td>" + source + "</td>" +
-				"<td>" + notes + "</td>" +
-				"<td>+" + amount + "</td>" +
-				"<td>" + date + "</td>" +
-				"</tr>"
-		
-				+ incomeRows;
-		
-				showAll();   
-				localStorage.setItem("incomeRows", incomeRows);
-		
-				var current = localStorage.getItem("totalIncome");
-		
-				if(current == null || current == "")
-				{
-					current = 0;
-				}
-				current = parseFloat(current) + amount;
-				localStorage.setItem("totalIncome", current);
-		
-			}
-		
-			function addExpense(){
-				var category = document.getElementById("expenseCategory").value;
-				var description = document.getElementById("expenseDescr").value;
-				var amount = parseFloat(document.getElementById("expenseAmt").value);
-		
-				if (isNaN(amount)) {
-						return;
-					}
-		
-				var date = document.getElementById("expenseDate").value;
-		
-				expenseRows =
-				"<tr class='expenseRows'>" +
-				"<td>Expense</td>" +
-				"<td>" + category + "</td>" +
-				"<td>" + description + "</td>" +
-				"<td>-" + amount + "</td>" +
-				"<td>" + date + "</td>" +
-				"</tr>"
-				+expenseRows;
-		
-				showAll();
-		
-				localStorage.setItem("expenseRows", expenseRows);
-		
-				var current = localStorage.getItem("totalExpense");
-				if (current == null || current == "")
-				{
-					current = 0;
-				}
-				current = parseFloat(current) + amount;
-		
-				localStorage.setItem("totalExpense", current);
-			
-			}
-				function showAll(){
-					var table = document.getElementById("entriesTable");
-		
-			table.innerHTML = header + incomeRows + expenseRows;
-				}
-		
-				function showIncome(){
-					var table = document.getElementById("entriesTable");
-		
-			table.innerHTML = header + incomeRows;
-					
-				}
-				function showExpenses(){
-					var table = document.getElementById("entriesTable");
-		
-			table.innerHTML = header + expenseRows;
-				}
-		
-				function submitAnalyze(){
-					if(incomeRows == "" || expenseRows == "") {
-						window.alert("Oops! seems like you didn't enter any expenses or income yet. Insert data then click to analyze!")
-						return;
-					}
-					location.href = "analysis.html";
-				}
-		
-				function resetAll(){
-		
-					var answer = prompt("This action will delete all records and cannot be undone. Type 'yes' to confirm reset");
-		
-					if (answer.toLowerCase() == "yes") {
-		
-					localStorage.setItem("incomeRows", "");
-					localStorage.setItem("expenseRows", "");
-					localStorage.setItem("totalIncome", 0);
-					localStorage.setItem("totalExpense", 0);
-					
-					
-					document.getElementById("incomeSource").value = "";
-					document.getElementById("incomeAmt").value = "";
-					document.getElementById("incomeDate").value = "";
-					document.getElementById("incomeNotes").value = "";
-		
-					document.getElementById("expenseCategory").value = "";
-					document.getElementById("expenseDescr").value = "";
-					document.getElementById("expenseAmt").value = "";
-					document.getElementById("expenseDate").value = "";
-		
-					incomeRows = "";
-					expenseRows = "";
-		
-					showAll();
-						
-					}
-		
-					
-				}
-		
-				function loadInput()
-				{
-				incomeRows = localStorage.getItem("incomeRows");
-				expenseRows = localStorage.getItem("expenseRows");
-				showAll();
-		
-				}
-		
-		</script>
+        <script>
+            var incomeRows;
+            var expenseRows;
+        
+            var header = "<tr>" +
+                "<th>Type</th>" +
+                "<th>Category</th>" +
+                "<th>Description</th>" +
+                "<th>Amount</th>" +
+                "<th>Date</th>";
+                
+            function addIncome(){
+                var source = document.getElementById("incomeSource").value;
+                var amount = parseFloat(document.getElementById("incomeAmt").value);
+                
+                    if (isNaN(amount)) {
+                        return;
+                    }
+        
+                var date = document.getElementById("incomeDate").value;
+                var notes = document.getElementById("incomeNotes").value;
+        
+                incomeRows =
+                "<tr class='incomeRows'>" +
+                "<td>Income</td>" +
+                "<td>" + source + "</td>" +
+                "<td>" + notes + "</td>" +
+                "<td>+" + amount + "</td>" +
+                "<td>" + date + "</td>" +
+                "</tr>"
+        
+                + incomeRows;
+        
+                showAll();   
+                localStorage.setItem("incomeRows", incomeRows);
+        
+                var current = localStorage.getItem("totalIncome");
+        
+                if(current == null || current == "")
+                {
+                    current = 0;
+                }
+                current = parseFloat(current) + amount;
+                localStorage.setItem("totalIncome", current);
+        
+            }
+        
+            function addExpense(){
+                var category = document.getElementById("expenseCategory").value;
+                var description = document.getElementById("expenseDescr").value;
+                var amount = parseFloat(document.getElementById("expenseAmt").value);
+        
+                if (isNaN(amount)) {
+                        return;
+                    }
+        
+                var date = document.getElementById("expenseDate").value;
+        
+                expenseRows =
+                "<tr class='expenseRows'>" +
+                "<td>Expense</td>" +
+                "<td>" + category + "</td>" +
+                "<td>" + description + "</td>" +
+                "<td>-" + amount + "</td>" +
+                "<td>" + date + "</td>" +
+                "</tr>"
+                +expenseRows;
+        
+                showAll();
+        
+                localStorage.setItem("expenseRows", expenseRows);
+        
+                var current = localStorage.getItem("totalExpense");
+                if (current == null || current == "")
+                {
+                    current = 0;
+                }
+                current = parseFloat(current) + amount;
+        
+                localStorage.setItem("totalExpense", current);
+            
+            }
+                function showAll(){
+                    var table = document.getElementById("entriesTable");
+        
+            table.innerHTML = header + incomeRows + expenseRows;
+                }
+        
+                function showIncome(){
+                    var table = document.getElementById("entriesTable");
+        
+            table.innerHTML = header + incomeRows;
+                    
+                }
+                function showExpenses(){
+                    var table = document.getElementById("entriesTable");
+        
+            table.innerHTML = header + expenseRows;
+                }
+        
+                function submitAnalyze(){
+                    if(incomeRows == "" || expenseRows == "") {
+                        window.alert("Oops! seems like you didn't enter any expenses or income yet. Insert data then click to analyze!")
+                        return;
+                    }
+                    location.href = "analysis.html";
+                }
+        
+                function resetAll(){
+        
+                    var answer = prompt("This action will delete all records and cannot be undone. Type 'yes' to confirm reset");
+        
+                    if (answer.toLowerCase() == "yes") {
+        
+                    localStorage.setItem("incomeRows", "");
+                    localStorage.setItem("expenseRows", "");
+                    localStorage.setItem("totalIncome", 0);
+                    localStorage.setItem("totalExpense", 0);
+                    
+                    
+                    document.getElementById("incomeSource").value = "";
+                    document.getElementById("incomeAmt").value = "";
+                    document.getElementById("incomeDate").value = "";
+                    document.getElementById("incomeNotes").value = "";
+        
+                    document.getElementById("expenseCategory").value = "";
+                    document.getElementById("expenseDescr").value = "";
+                    document.getElementById("expenseAmt").value = "";
+                    document.getElementById("expenseDate").value = "";
+        
+                    incomeRows = "";
+                    expenseRows = "";
+        
+                    showAll();
+                        
+                    }
+        
+                    
+                }
+        
+                function loadInput()
+                {
+                incomeRows = localStorage.getItem("incomeRows");
+                expenseRows = localStorage.getItem("expenseRows");
+                showAll();
+        
+                }
+        </script>
     </head>
  
-    <body>
+    <body onload="loadInput()">
         <header id="header">
             <div> <!--our logo and nav links-->
                 <table class="headerTable" style="width: 100%;">
@@ -188,17 +187,14 @@
                         </td>
                         <td >
                             <nav>
-                            <a href = "#header">Home</a>
-                            <a href = "Input.html" id ="selected">Input</a>
+                            <a href = "index.html">Home</a>
+                            <a href = "#header" id ="selected">Input</a>
                             <a href = "Analysis.html">Analysis</a>
                             <a href = "Personality.html">Personality</a>
                             <a href = "Tips.html">Tips</a>
                             <a href = "Support.html">Support</a>
                             <a href = "AboutUs.html">About Us</a>
                             </nav>
-                        </td>
-                        <td style="text-align: right;" >
-                            <input type="button" value="Start Tracking" class="button">
                         </td>
                     </tr>
                 </table>                
@@ -207,113 +203,149 @@
  
  
  
-<main>
- 
-<body onload="loadInput()">
-<div>
-    <h1>Expense Input</h1>
-    <p>Track your income and expenses to better understand your spending habits</p>
-</div>
- 
- 
-<table class="boxTable">
-    <tr>
- 
- 
-        <td>
-            <div class="box">
- 
-                <h2>Add Income</h2>
- 
-                <label>Source</label>
-                <input id = "incomeSource" class="inputField" type="text" placeholder="e.g., Job salary, Allowance" required>
- 
-                <label>Amount</label>
-                <input id = "incomeAmt" class="inputField" type="number" placeholder="AED 0.00" required>
- 
-                <label>Date</label>
-                <input id = "incomeDate" class="inputField" type="date" required>
- 
-                <label>Notes (Optional)</label>
-                <textarea id = "incomeNotes" class="inputField" placeholder="Additiona Details..."></textarea>
- 
-                <button class="blackBtn" onclick="addIncome()">Add Income</button>
+        <main>
+    
+            <div>
+                <h1>Expense Input</h1>
+                <p>Track your income and expenses to better understand your spending habits</p>
             </div>
-        </td>
- 
-        <!-- EXPENSE -->
-        <td>
-            <div class="box">
- 
-                <h2>Add Expense</h2>
- 
-                <label>Category</label>
-                <select id = "expenseCategory" class="inputField" required>
-                    <option value="">Select category</option>
-                    <option>Food & Dining</option>
-                    <option>Transportation</option>
-                    <option>Education</option>
-                    <option>Entertainment</option>
-                    <option>Shopping</option>
-                    <option>Other</option>
-                </select>
- 
- 
-                <label>Description</label>
-                <input id = "expenseDescr" class="inputField" type="text" placeholder="e.g., Coffee, Taxi" required>
- 
-                <label>Amount</label>
-                <input id = "expenseAmt" class="inputField" type="number" placeholder="AED 0.00" required>
- 
-                <label>Date</label>
-                <input id = "expenseDate" class="inputField" type="date" required>
- 
-                <button class="blackBtn" onclick="addExpense()">Add Expense</button>
- 
+        
+        
+            <table class="boxTable">
+                <tr>
+            
+            
+                    <td>
+                        <div class="box">
+            
+                            <h2>Add Income</h2>
+            
+                            <label>Source</label>
+                            <input id = "incomeSource" class="inputField" type="text" placeholder="e.g., Job salary, Allowance" required>
+            
+                            <label>Amount</label>
+                            <input id = "incomeAmt" class="inputField" type="number" placeholder="AED 0.00" required>
+            
+                            <label>Date</label>
+                            <input id = "incomeDate" class="inputField" type="date" required>
+            
+                            <label>Notes (Optional)</label>
+                            <textarea id = "incomeNotes" class="inputField" placeholder="Additiona Details..."></textarea>
+            
+                            <button class="blackBtn" onclick="addIncome()">Add Income</button>
+                        </div>
+                    </td>
+            
+                    <!-- EXPENSE -->
+                    <td>
+                        <div class="box">
+            
+                            <h2>Add Expense</h2>
+            
+                            <label>Category</label>
+                            <select id = "expenseCategory" class="inputField" required>
+                                <option value="">Select category</option>
+                                <option>Food & Dining</option>
+                                <option>Transportation</option>
+                                <option>Education</option>
+                                <option>Entertainment</option>
+                                <option>Shopping</option>
+                                <option>Other</option>
+                            </select>
+            
+            
+                            <label>Description</label>
+                            <input id = "expenseDescr" class="inputField" type="text" placeholder="e.g., Coffee, Taxi" required>
+            
+                            <label>Amount</label>
+                            <input id = "expenseAmt" class="inputField" type="number" placeholder="AED 0.00" required>
+            
+                            <label>Date</label>
+                            <input id = "expenseDate" class="inputField" type="date" required>
+            
+                            <button class="blackBtn" onclick="addExpense()">Add Expense</button>
+            
+                        </div>
+                    </td>
+            
+                </tr>
+            </table>
+        
+            <div class="entriesBox">
+            
+                <div class="entriesLegend">
+                    <h2>Recent Entries</h2>
+            
+                    <div>
+                        <button class="whiteBtn" onclick="showAll()">All</button>
+                        <button class="smallBlackBtn" onclick="showIncome()">Income</button>
+                        <button class="smallBlackBtn" onclick="showExpenses()">Expenses</button>
+                    </div>
+                </div>
+            
+                <table id = "entriesTable" class="entriesTable">
+                <tr id = "head">
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+                </table>
+            
             </div>
-        </td>
- 
-    </tr>
-</table>
- 
-<div class="entriesBox">
- 
-    <div class="entriesLegend">
-        <h2>Recent Entries</h2>
- 
-        <div>
-            <button class="whiteBtn" onclick="showAll()">All</button>
-            <button class="smallBlackBtn" onclick="showIncome()">Income</button>
-            <button class="smallBlackBtn" onclick="showExpenses()">Expenses</button>
+        
+            <div class="bottom">
+        
+            <h3>Ready to analyze your data?</h3>
+            <p>Submit your entries to get insights</p>
+        
+            <div class="bottomButtons">
+                <button class="whiteBtn" onclick="resetAll()">Reset</button>
+                <button class="smallBlackBtn" onclick="submitAnalyze()">Submit & Analyze</button>
+            </div>
+        
         </div>
-    </div>
+        
+
+        </main>
+
+        <footer>
+            <!-- logo -->
+            <h1>
+			<a href = "index.html"><img src = "" alt = "EduCents logo"></a>
+            </h1>
+            <!-- our social links -->
+            <div >
+                <a href = "https://discord.com/">
+                    <img src="../assets/discord-logo 1.png" width="50" height="50" alt="discord">
+                </a>
+                <a href = "https://www.reddit.com/">
+                    <img src="../assets/reddit 1.png" width="50" height="50" alt="reddit">
+                </a>
+                <a href = "https://github.com/">
+                    <img src="../assets/github 1.png" width="50" height="50" alt="github">
+                </a>
+                <a href = "mailto:educents@gmail.com">
+                    <img src="../assets/icons8-email-symbol-50.png" width="45" height="45" alt="email">
+                </a>
+                <a href= "https://www.instagram.com/">
+                    <img src="../assets/icons8-instagram-30.png" width="50" height="50" alt="insta">
+                </a>
+                <a href= "https://www.facebook.com/">
+                    <img src="../assets/icons8-facebook-50 1.png" width="50" height="50" alt="facebook">
+                </a>
+                    <a href= "https://x.com/?lang=en">
+                    <img src="../assets/icons8-x-50 1.png" width="50" height="50" alt="x">
+                </a>
+            </div>
  
-    <table id = "entriesTable" class="entriesTable">
-    <tr id = "head">
-        <th>Type</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Amount</th>
-        <th>Date</th>
-    </tr>
-    </table>
- 
-</div>
- 
-<div class="bottom">
- 
-    <h3>Ready to analyze your data?</h3>
-    <p>Submit your entries to get insights</p>
- 
-    <div class="bottomButtons">
-        <button class="whiteBtn" onclick="resetAll()">Reset</button>
-        <button class="smallBlackBtn" onclick="submitAnalyze()">Submit & Analyze</button>
-    </div>
- 
-</div>
- 
-</main>
-</body>
- 
+            <!-- footer text -->
+            <p>Empowering students to build healthy financial habits for life.</p>
+            <p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>
+        </footer>
+
+    </body>
+    
  
 </html>
