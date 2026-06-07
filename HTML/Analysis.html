@@ -6,24 +6,35 @@
         <link rel="stylesheet" href="../CSS/main.CSS">
         <link rel="stylesheet" href="../CSS/analysis.css">
         
-        <!-- Quicksand font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
+        <style>
+            .incomeRows{
+                background-color: rgb(219, 201, 250);
+            }
+            .expenseRows{
+                background-color: rgb(216, 175, 216);
+            }
+        </style>
+    
         <script>
+            var incomeRows = "";
+            var expenseRows = "";
+
             function loadPersonality(){
                 var income = parseFloat(localStorage.getItem("totalIncome"));
                 var expense = parseFloat(localStorage.getItem("totalExpense"));
                 var rows = localStorage.getItem("expenseRows");
-
+ 
                 if(isNaN(income)) income = 0;
                 if(isNaN(expense)) expense = 0;
                 if(rows == null) rows = "";
-
+ 
                 calculatePersonality(income, expense, rows);
             }
-
+ 
             function calculatePersonality(income, expense, rows){
                 var savingsRate = 0;
                 if(income > 0){
@@ -32,7 +43,7 @@
                 if(savingsRate < 0){ savingsRate = 0; }
                 calculateScores(savingsRate, rows);
             }
-
+ 
             function calculateScores(savingsRate, rows){
                 var planningScore;
                 var savingTendency;
@@ -42,16 +53,16 @@
                 var education = 0;
                 var entertainment = 0;
                 var shopping = 0;
-
+ 
                 if(savingsRate >= 40){ planningScore = 8.5; }
                 else if(savingsRate >= 25){ planningScore = 7.5; }
                 else if(savingsRate >= 10){ planningScore = 6.5; }
                 else if(savingsRate >= 0){ planningScore = 5.5; }
                 else{ planningScore = 3.5; }
-
+ 
                 savingTendency = savingsRate / 10;
                 if(savingTendency > 10){ savingTendency = 10; }
-
+ 
                 var word = "";
                 for(var i = 0; i < rows.length; i++){
                     var ch = rows[i];
@@ -66,27 +77,27 @@
                         word = "";
                     }
                 }
-
+ 
                 if(entertainment >= 2){ riskTolerance++; }
                 if(shopping >= 2){ riskTolerance++; }
                 if(education >= 2){ riskTolerance--; }
                 if(savingsRate > 40){ riskTolerance--; }
                 if(riskTolerance < 3){ riskTolerance = 3; }
                 if(riskTolerance > 9){ riskTolerance = 9; }
-
+ 
                 displaySummary(planningScore, savingTendency, riskTolerance,
                     savingsRate, entertainment, shopping, education);
             }
-
+ 
             function displaySummary(planning, saving, risk, savingsRate,
                                     entertainment, shopping, education){
                 document.getElementById("planningScore").innerHTML = planning.toFixed(1) + "/10";
                 document.getElementById("savingTendency").innerHTML = saving.toFixed(1) + "/10";
                 document.getElementById("riskTolerance").innerHTML = risk.toFixed(1) + "/10";
-
+ 
                 var personality;
                 var description;
-
+ 
                 if(planning >= 8 && saving >= 6){
                     personality = "The Mindful Spender";
                     description = "You demonstrate thoughtful financial decision-making with a balanced approach to saving and spending. You prioritize essential expenses while maintaining room for occasional treats.";
@@ -107,13 +118,13 @@
                     personality = "The Balanced Budgeter";
                     description = "You maintain a practical approach to money and strive for financial stability through balanced decision-making.";
                 }
-
+ 
                 document.getElementById("personalityType").innerHTML = personality;
                 document.getElementById("personalityDescription").innerHTML = description;
-
+ 
                 calculateTraits(planning, savingsRate, entertainment, shopping, education);
             }
-
+ 
             function calculateTraits(planning, savingsRate, entertainment, shopping, education){
                 var budget = Math.round(Math.min(100, savingsRate + 30));
                 var impulse = Math.max(0, 100 - (shopping * 15));
@@ -121,7 +132,7 @@
                 var confidence = Math.round(planning * 8);
                 var social = Math.min(100, entertainment * 15);
                 var tech = 70 + ((shopping + entertainment) % 21);
-
+ 
                 setTrait("budget", budget);
                 setTrait("impulse", impulse);
                 setTrait("focus", focus);
@@ -129,18 +140,18 @@
                 setTrait("social", social);
                 setTrait("tech", tech);
             }
-
+ 
             function setTrait(name, value){
                 document.getElementById(name + "Trait").innerHTML = value + "%";
                 document.getElementById(name + "Bar").style.width = value + "%";
             }
         </script>
-
+ 
     </head>
  
     <body onload="loadAnalysis()">
         <header id="header">
-            <div> <!--our logo and nav links-->
+            <div>
                 <table class="headerTable" style="width: 100%;">
                     <tr>
                         <td style="max-width: 60px;" >
@@ -151,6 +162,7 @@
                             <a href = "index.html">Home</a>
                             <a href = "Input.html">Input</a>
                             <a href = "#header" id="selected">Analysis</a>
+                            <a href = "Personality.html">Personality</a>
                             <a href = "Tips.html">Tips</a>
                             <a href = "AboutUs.html">About Us</a>
                             </nav>
@@ -162,7 +174,15 @@
             <script>
                 var income = 0;
                 var expense = 0;
- 
+
+                var header = "<tr>" +
+                    "<th>Type</th>" +
+                    "<th>Category</th>" +
+                    "<th>Description</th>" +
+                    "<th>Amount</th>" +
+                    "<th>Date</th>" +
+                    "</tr>";
+                    
                 function loadAnalysis(){
                    income = parseFloat(localStorage.getItem("totalIncome"));
                    expense = parseFloat(localStorage.getItem("totalExpense"));
@@ -181,7 +201,7 @@
                     topCategory();
                     loadPersonality();
                 }
-
+ 
                 function calcIncome(){
                     document.getElementById("totalIncome").innerHTML = "AED " + Math.round(income * 100) / 100;
                 }
@@ -224,7 +244,7 @@
                         }
                     }
                 }
-
+ 
                 function budgetReccs(){
                     var net = income - expense;
                     if(income === 0 && expense === 0){
@@ -237,8 +257,8 @@
                     else if(net <= 1000){
                         document.getElementById("budgetReccom").innerHTML = "You're slightly winning, but don't celebrate in a mall yet";
                     } else {
-                            document.getElementById("budgetReccom").innerHTML = "Solid financial control, you're building stability!";
-                        }
+                        document.getElementById("budgetReccom").innerHTML = "Solid financial control, you're building stability!";
+                    }
                 }
  
                 function topCategory(){
@@ -247,7 +267,7 @@
                         document.getElementById("topCategory").innerHTML = "No expense data yet";
                         return;
                     }
-
+ 
                     var food = 0;
                     var transport = 0;
                     var education = 0;
@@ -268,7 +288,7 @@
                             word = "";
                         }
                     }
-
+ 
                     var max = food;
                     var result = "Food is your main expense (no judgement...)";
                     if (transport > max){ max = transport; result = "Transportation is carrying your budget"; }
@@ -278,7 +298,7 @@
  
                     document.getElementById("topCategory").innerHTML = result;
                 }
-
+ 
                 function spendingTrend(){
                     if(income == 0){
                         document.getElementById("spendingTrend").innerHTML = "No income data available. Share with us so we can turn your money story into a successful one";
@@ -309,43 +329,37 @@
             <section class = "featured">
                 <table>
                     <tr>
-                        <td colspan="4">
-                            <marquee direction="left" style="font-size: 36px; font-weight: bolder;">Stats</marquee>
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
                             <div class="articleBox">
-                                    <img src="../assets/Image (2).jpg" alt="icon">
+                                <img src="../assets/Image (2).jpg" alt="icon">
                                 <h4 style="color: white;">Total Income</h4>
-                                <p style="color: plum;" id = "totalIncome">AED ###.##/p>
+                                <p style="color: rgb(63, 42, 63); font-weight: bolder" id = "totalIncome">AED ###.##</p>
                             </div>
                         </td>
                         <td>
                             <div class="articleBox">
-                                    <img src="../assets/Image (3).jpg" alt="icon">
+                                <img src="../assets/Image (3).jpg" alt="icon">
                                 <h4 style="color: white;">Total Expenses</h4>
-                                <p style="color: plum;" id = "totalExpense">AED ###.##</p>
+                                <p style="color: rgb(63, 42, 63); font-weight: bolder;" id = "totalExpense">AED ###.##</p>
                             </div>
                         </td>
                         <td>
                             <div class="articleBox">
-                                    <img src="../assets/Image.jpg" alt="beach vacation budget">
+                                <img src="../assets/Image.jpg" alt="beach vacation budget">
                                 <h4 style="color: white;">Net Savings</h4>
-                                <p style="color: plum;"  id = "netSavings">AED ###.##</p>
+                                <p style="color:rgb(63, 42, 63); font-weight: bolder"  id = "netSavings">AED ###.##</p>
                             </div>
                         </td>
                         <td>
                             <div class="articleBox">
-                                    <img src="../assets/Image (1).jpg" alt="beach vacation budget">
+                                <img src="../assets/Image (1).jpg" alt="beach vacation budget">
                                 <h4 style="color: white;">Savings Rate</h4>
-                                <p style="color: plum;" id = "savingsRate">0%</p>
+                                <p style="color: rgb(63, 42, 63); font-weight: bolder" id = "savingsRate">0%</p>
                             </div>
                         </td>
                     </tr>
                 </table>
             </section>
- 
 
             <section class="personalitySummary">
                 <img src="../assets/cat4.png" alt="personality icon" width="300px">
@@ -355,6 +369,7 @@
                     <p id="personalityDescription">
                         Personality description goes here.
                     </p>
+
                     <table class="scoreTable">
                         <tr>
                             <td>
@@ -362,9 +377,6 @@
                                     <img src="../assets/star2.png" alt="icon">
                                     <p>Planning Score</p>
                                     <h3 id="planningScore">0/10</h3>
-                                    <p id="planningCaption">
-                                        Excellent planning skills
-                                    </p>
                                 </div>
                             </td>
                             <td>
@@ -372,9 +384,6 @@
                                     <img src="../assets/star1.png" alt="icon">
                                     <p>Saving Tendency</p>
                                     <h3 id="savingTendency">0/10</h3>
-                                    <p id="savingCaption">
-                                        Strong saving habits
-                                    </p>
                                 </div>
                             </td>
                             <td>
@@ -382,9 +391,6 @@
                                     <img src="../assets/star3.png" alt="icon">
                                     <p>Risk Tolerance</p>
                                     <h3 id="riskTolerance">0/10</h3>
-                                    <p id="riskCaption">
-                                        Moderate risk approach
-                                    </p>
                                 </div>
                             </td>
                         </tr>
@@ -398,9 +404,8 @@
                     Personality Traits Breakdown
                     <img src="../assets/cloud1.png" alt="icon" width="60px">
                 </h2>
-                <div class="traitsBox">
-                    
 
+                <div class="traitsBox">
                     <div class="trait">
                         <div class="traitHeader">
                             <span>Budget Consciousness</span>
@@ -462,13 +467,14 @@
                     </div>
                 </div>
             </section>
- 
+
             <section class="keyInsights">
                 <h2>
                 <img src="../assets/star4.png" width="20px"/>
                 Key Insights
                 <img src="../assets/star4.png" width="20px"/>
                 </h2>
+
                 <table>
                     <tr>
                         <td>
@@ -505,15 +511,13 @@
                     </tr>
                 </table>
             </section>
- 
         </main>
     
         <footer>
-            <!-- logo -->
             <h1>
-			<a href = "index.html"><img class = "footerimg" src = "../assets/EducentsLogo.png" alt = "EduCents logo"></a>
+                <a href = "index.html"><img class = "footerimg" src = "../assets/EducentsLogo.png" alt = "EduCents logo"></a>
             </h1>
-            <!-- our social links -->
+
             <div >
                 <a href = "https://discord.com/">
                     <img src="../assets/discord-logo 1.png" width="50" height="50" alt="discord">
@@ -533,12 +537,11 @@
                 <a href= "https://www.facebook.com/">
                     <img src="../assets/icons8-facebook-50 1.png" width="50" height="50" alt="facebook">
                 </a>
-                    <a href= "https://x.com/?lang=en">
+                <a href= "https://x.com/?lang=en">
                     <img src="../assets/icons8-x-50 1.png" width="50" height="50" alt="x">
                 </a>
             </div>
- 
-            <!-- footer text -->
+
             <p>Empowering students to build healthy financial habits for life.</p>
             <p style="font-size: 0.88rem; color: rgb(117, 117, 117);">© 2026 EduCent. All rights reserved.</p>
         </footer>

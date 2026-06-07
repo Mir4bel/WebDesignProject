@@ -64,11 +64,16 @@ footer a {
 }
 
 footer a img:hover{
-    width: 52px;
+    width: 350px;
     height: auto;
 
 }
 
+footer a img{
+    width: 52px;
+    height: auto;
+
+}
 
 .font-light{
     font-size: small;
