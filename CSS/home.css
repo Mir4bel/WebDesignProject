@@ -32,10 +32,8 @@ marquee {
 
 #WhyEduCents {
     overflow: hidden ;
-    position: relative;
     padding-bottom: 30px;
     padding-top: 0;
-    /* background: linear-gradient(0deg, #9e2640 20%, rgba(255, 0, 0, 0) 90%); */
 
 }
 
