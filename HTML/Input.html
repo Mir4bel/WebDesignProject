@@ -128,7 +128,7 @@
                 }
         
                 function submitAnalyze(){
-                        if(!incomeRows || !expenseRows){
+                        if(!incomeRows && !expenseRows){
                         window.alert("Oops! seems like you didn't enter any expenses or income yet. Insert data then click to analyze!")
                         return;
                     }

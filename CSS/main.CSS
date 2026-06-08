@@ -69,6 +69,12 @@ footer a img:hover{
 
 }
 
+footer div a img:hover{
+    width: 55px;
+    height: auto;
+
+}
+
 footer a img{
     width: 52px;
     height: auto;
